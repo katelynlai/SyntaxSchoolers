@@ -47,22 +47,25 @@ nav{
 }
 
 .wrapper {
+    flex: 1 1 300px;
     text-align: left;
+    padding: 20px 1000px 10px 100px;
     max-width: 600px;
     margin: 100px auto 0;
-    padding: 20px;
 }
 
 h1 {
     font-size: 4rem;
     color: var(--base-color);
     margin-bottom: 0.5rem;
+    line-height: 1.2;
 }
 
 h2 {
     font-size: 2rem;
     color: var(--base-color);
     margin-bottom: 2rem;
+    line-height: 1.4;
 }
 
 /* Start Now button */
@@ -83,4 +86,22 @@ h2 {
 
 .start-btn:hover {
     background-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .start-btn {
+        padding: 12px 20px;
+    }
 }
