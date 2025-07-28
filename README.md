@@ -1,1 +1,1 @@
-# SyntaxSchoolers
+# Syntax Schoolers
