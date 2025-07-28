@@ -165,6 +165,13 @@ a:hover{
     margin-left: 20px;
 }
 
+.student-name {
+    margin-left: 20px;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
 .student-levels {
     width: fit-content;
     max-width: 100%;
