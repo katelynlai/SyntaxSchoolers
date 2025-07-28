@@ -1,39 +1,37 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vive Lingo - Student Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    
-    <div class="container text-center">
-        
-        <div class="row">
-    
-            <div class="col welcome-text">
-                <h1>Welcome {user}!</h1>
-            </div>
-
-            <div class="col student-dashboard">
-                <h5>Student Dashboard<h5>
-                <button type="button" class="btn btn-primary">Click to continue!</button>
-            </div>
-
-            <div class="col">
-                <div class="container list-of-levels">
-                    <p class="h6">Level 1: <br>Matching Pairs</p>
-                    <p class="h6">Level 2: <br>Matching Pairs</p>
-                    <p class="h6">Level 3: <br>Matching Pairs</p>
-                    <p class="h6">Level 4: <br>Matching Pairs</p>
+<html>
+    <head>
+        <title>My First webpage</title>
+        <link rel="stylesheet" href="./login.css">
+        <script src="interact.js"></script>
+    </head>
+        <meta charset="UTF 8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    <body>
+        <div class="wrapper">
+            <h1>Login</h1>
+            <form>
+                <div>
+                    <label for="firstname-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-480.67q-66 0-109.67-43.66Q326.67-568 326.67-634t43.66-109.67Q414-787.33 480-787.33t109.67 43.66Q633.33-700 633.33-634t-43.66 109.67Q546-480.67 480-480.67Zm-320 254V-260q0-36.67 18.5-64.17T226.67-366q65.33-30.33 127.66-45.5 62.34-15.17 125.67-15.17t125.33 15.5q62 15.5 127.34 45.17 30.33 14.33 48.83 41.83T800-260v33.33q0 27.67-19.5 47.17T733.33-160H226.67q-27.67 0-47.17-19.5T160-226.67Z"/></svg>
+                    </label>
+                    <input required type="text" name="firstname" id="firstname-input" placeholder="Firstname">
                 </div>
-            </div>
-        
+                <div>
+                    <label for="surname-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-480.67q-66 0-109.67-43.66Q326.67-568 326.67-634t43.66-109.67Q414-787.33 480-787.33t109.67 43.66Q633.33-700 633.33-634t-43.66 109.67Q546-480.67 480-480.67Zm-320 254V-260q0-36.67 18.5-64.17T226.67-366q65.33-30.33 127.66-45.5 62.34-15.17 125.67-15.17t125.33 15.5q62 15.5 127.34 45.17 30.33 14.33 48.83 41.83T800-260v33.33q0 27.67-19.5 47.17T733.33-160H226.67q-27.67 0-47.17-19.5T160-226.67Z"/></svg>
+                    </label>
+                    <input requiredtype="text" name="surname" id="surname-input" placeholder="Surname">
+                </div>
+                <div>
+                    <label for="password-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z"/></svg>
+                    </label>
+                    <input required type="text" name="password" id="password-input" placeholder="Password">
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p>Already have an Account <a href="login.html">Login</a></p>
         </div>
-    
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-  </body>
+    </body>
 </html>
