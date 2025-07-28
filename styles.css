@@ -6,3 +6,20 @@ h1, h5 {
 .welcome-text {
     margin-top: 50px;
 }
+
+.student-dashboard {
+    margin-top: 25px;
+}
+
+.list-of-levels {
+    /* width: 100px; */
+    background-color: blue;
+    margin-top: 70px;
+    padding: 50px;
+}
+
+.btn-primary {
+    position: absolute;
+    margin-top: 200px;
+    align-items: center;
+}
