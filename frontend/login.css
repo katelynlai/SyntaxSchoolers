@@ -20,7 +20,7 @@ html{
 
 body{
     min-height: 100vh;
-    background-image: url(images/EiffelTower_img1.jpg);
+    background-image: url(../assests/eiffeltower.jpg);
     background-size: cover;
     background-position: right;
     overflow: hidden;
