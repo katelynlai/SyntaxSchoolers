@@ -20,7 +20,7 @@ html{
 
 body{
     min-height: 100vh;
-    background-image: url(signupbackground.jpg);
+    background-image: url(../assests/eiffeltower.jpg);
     background-size: cover;
     background-position: right;
     overflow: hidden;
@@ -143,3 +143,10 @@ a:hover{
     }
 }
 
+form div.incorrect label{
+    background-color: red;
+}
+
+form div.incorrect input{
+    border-color: red;
+}
