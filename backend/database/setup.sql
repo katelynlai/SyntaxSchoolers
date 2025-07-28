@@ -8,14 +8,14 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     role VARCHAR(20) DEFAULT 'Student' CHECK (role IN ('Student', 'staff')),
     PRIMARY KEY (user_id)
-    );
+);
 
 -- Category table
 CREATE TABLE category (
     category_id INT GENERATED ALWAYS AS IDENTITY,
     category_name VARCHAR(100) NOT NULL,
     PRIMARY KEY (category_id)
-    );
+);
 
 -- Vocab table
 CREATE TABLE vocab (
@@ -24,7 +24,7 @@ CREATE TABLE vocab (
     lang2_word VARCHAR(255) NOT NULL,
     category_id INTEGER REFERENCES category(category_id) ON DELETE CASCADE,
     PRIMARY KEY (vocab_id)
-    );
+);
 
 -- LevelProgress table
 CREATE TABLE levelprogress (
@@ -46,48 +46,58 @@ CREATE TABLE overallprogress (
     PRIMARY KEY (overall_progress_id)
 );
 
--- Insert some sample categories
+-- Insert updated categories
 INSERT INTO category (category_name) VALUES 
-    ('Home'),
     ('Abroad'),
-    ('School');
+    ('Directions'),
+    ('Time & Date');
 
--- Insert some sample vocabulary (English to French)
+-- Insert updated vocabulary (English to French)
+
+-- Abroad (category_id = 1)
 INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
-    -- Home
-    ('house', 'maison', 1),
-    ('kitchen', 'cuisine', 1),
-    ('bedroom', 'chambre', 1),
-    ('bathroom', 'salle de bain', 1),
-    ('living room', 'salon', 1),
-    ('garden', 'jardin', 1),
-    ('door', 'porte', 1),
-    ('window', 'fenêtre', 1),
-    
-    -- Abroad
-    ('airport', 'aéroport', 2),
-    ('hotel', 'hôtel', 2),
-    ('restaurant', 'restaurant', 2),
-    ('passport', 'passeport', 2),
-    ('ticket', 'billet', 2),
-    ('luggage', 'bagages', 2),
-    ('train', 'train', 2),
-    ('map', 'carte', 2),
-    
-    -- School
-    ('book', 'livre', 3),
-    ('pen', 'stylo', 3),
-    ('classroom', 'salle de classe', 3),
-    ('teacher', 'professeur', 3),
-    ('student', 'étudiant', 3),
-    ('homework', 'devoirs', 3),
-    ('test', 'examen', 3),
-    ('library', 'bibliothèque', 3);
+    ('airport', 'aéroport', 1),
+    ('hotel', 'hôtel', 1),
+    ('restaurant', 'restaurant', 1),
+    ('passport', 'passeport', 1),
+    ('ticket', 'billet', 1),
+    ('luggage', 'bagages', 1),
+    ('train', 'train', 1),
+    ('map', 'carte', 1);
 
--- Create a sample staff user (password: admin123)
+-- Directions (category_id = 2)
+INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
+    ('left', 'gauche', 2),
+    ('right', 'droite', 2),
+    ('straight ahead', 'tout droit', 2),
+    ('turn', 'tourner', 2),
+    ('intersection', 'carrefour', 2),
+    ('stop', 'arrêt', 2),
+    ('sign', 'panneau', 2),
+    ('traffic light', 'feu de signalisation', 2);
+
+-- Time & Date (category_id = 3)
+INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
+    ('today', 'aujourd\'hui', 3),
+    ('tomorrow', 'demain', 3),
+    ('yesterday', 'hier', 3),
+    ('morning', 'matin', 3),
+    ('afternoon', 'après-midi', 3),
+    ('evening', 'soir', 3),
+    ('night', 'nuit', 3),
+    ('day', 'jour', 3),
+    ('week', 'semaine', 3),
+    ('month', 'mois', 3),
+    ('year', 'année', 3),
+    ('hour', 'heure', 3),
+    ('minute', 'minute', 3),
+    ('second', 'seconde', 3),
+    ('now', 'maintenant', 3);
+
+-- Create a sample staff user
 INSERT INTO users (first_name, last_name, username, email, password, role) VALUES 
     ('Admin', 'User', 'admin', 'admin@syntaxschoolers.com', 'admintest', 'staff');
 
--- Create a sample student user (password: student123)
+-- Create a sample student user
 INSERT INTO users (first_name, last_name, username, email, password, role) VALUES 
     ('John', 'Doe', 'student', 'student@syntaxschoolers.com', 'studenttest', 'Student');
