@@ -20,7 +20,7 @@ html{
 
 body{
     min-height: 100vh;
-    background-image: url(signupbackground.jpg);
+    background-image: url(images/EiffelTower_img1.jpg);
     background-size: cover;
     background-position: right;
     overflow: hidden;
@@ -170,6 +170,11 @@ a:hover{
     font-size: 1rem;
     font-weight: 900;
     text-transform: uppercase;
+}
+
+.btn-info.student-btn-click-start {
+    margin-left: 20px !important;
+    border: 2px solid black !important;
 }
 
 .student-levels {
