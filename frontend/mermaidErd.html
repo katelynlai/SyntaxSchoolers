@@ -13,9 +13,9 @@
 
   <pre class="mermaid">
 erDiagram
-    users ||--o{ levelProgress: references
-    users ||--O{ overallProgress: references
-    category ||--o{ vocab: references
+    users ||--o{ levelProgress: user_id
+    users ||--O{ overallProgress: user_id
+    category ||--o{ vocab: category_id
         
 
     users {
