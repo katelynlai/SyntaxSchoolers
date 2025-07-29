@@ -11,6 +11,11 @@
     padding: 0;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 html{
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 12pt;
@@ -27,16 +32,25 @@ body{
 }
 
 .wrapper{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;     /* Stack nav items vertically */
+    margin-left: 0;
     box-sizing: border-box;
     background-color: var(--base-color);
-    height: 100vh;
-    width: max(20%, 600px);
+    width: 100%;
+    max-width: 100%;
     padding: 10px;
-    border-radius: 0 20px 20px 0;
+}
+
+.wrapper .nav {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-grow: 1;
+}
+
+.wrapper .nav-item.logout {
+    margin-top: auto;
 }
 
 h1 {
@@ -214,15 +228,34 @@ a:hover{
 
 /* Teacher controls */
 
-.teacher-controls {
-    margin: 75px 10px 0 0;
-    padding: 50px !important;
-    border: 2px solid black !important;
+.teacher-controls-wrapper {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.play-test {
-    margin: 75px 10px 0 0;
-    padding: 50px !important;
-    border: 2px solid black !important;
+.teacher-controls {
+    display: flex !important;
+    background-color: var(--accent-color) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 14px 28px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s !important;
+    align-self: center !important;
+    color: var(--base-color);
+    font-weight: bold !important;
+    margin-top: 12px !important;
+}
+
+.teacher-controls a {
+    text-decoration: none;
+    color: var(--base-color) !important;
+    font-weight: bold;
+}
+
+.teacher-controls:hover {
+    background-color: darkblue !important;
 }
 
