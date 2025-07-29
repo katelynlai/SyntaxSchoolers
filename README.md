@@ -7,7 +7,7 @@
 
 The aim of the app is to provide fun and engaging way of learning a non-STEM subject. The app allows for the translating of basic concepts. 
 
-## Stakeholders & Solutions Analysis
+## Stakeholder & Solutions Analysis
 
-As a user...
+- [ ] Mercury
 
