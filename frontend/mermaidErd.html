@@ -13,7 +13,12 @@
 
   <pre class="mermaid">
 erDiagram
-    USERS ||--o{ VOCAB : user
+    USERS ||--o{ LINEITEM: places
+    VOCAB ||--|{ LINEITEM: contains
+    CATEGORY ||--|{ LINEITEM: belongs_to
+    LEVELPROGRESS ||--|{ LINEITEM: tracks
+    
+
     USERS {
         user_id integer "PK"
         first_name varchar "not null"
@@ -22,14 +27,25 @@ erDiagram
         password varchar "hashed"
         role varchar "'students' or 'staff'"
     }
-    VOCAB ||--|{ LINE-ITEM : contains
     VOCAB {
         vocab_id integer "PK"
         lang1_word varchar "not null"
         lang2_word varchar "not null"
         category_id varchar "foreign key"
     }
-    
+    CATEGORY {
+        category_id integer "PK"
+        category_name varchar "not null"
+    }
+    LEVELPROGRESS {
+        level_progress_id integer "PK"
+        user_id integer "FK"
+        level_id integer "not null"
+        questions_answered integer "not null"
+        questions_correct integer "not null"
+        total_questions integer "not null"
+        level_status boolean "'pass' or 'fail'" 
+    }
 
   </pre>
 </body>
