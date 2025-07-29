@@ -145,7 +145,7 @@ a:hover{
 
 /* for Dashboard pages */ 
 
-.student-dashboard-heading {
+.student-dashboard-heading, .teacher-dashboard-heading {
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 2rem;
     font-weight: 900;
@@ -155,14 +155,13 @@ a:hover{
     color: white;
 }
 
-.student-name {
+.student-name, .teacher-name {
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     margin-left: 20px;
     font-size: 1rem;
     font-weight: 900;
     text-transform: uppercase;
     color: white;
-
 }
 
 .dashboard-controls {
@@ -189,7 +188,7 @@ a:hover{
     margin: auto 0;
     margin-left: 20px;
     margin-right: 50px;
-    padding: 60px;
+    padding: 80px;
     align-self: flex-end;
 }
 
