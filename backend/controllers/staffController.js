@@ -248,14 +248,9 @@ const searchVocabWords = async (req, res) => {
 };
 
 module.exports = {
-    createVocabWord,
-    getAllVocabWords,
-    getVocabWordById,
-    updateVocabWord,
-    deleteVocabWord,
-    getAllCategories,
-    createCategory,
-    updateCategory,
-    deleteCategory,
-    searchVocabWords
+    createVocabWord, getAllVocabWords,
+    getVocabWordById, updateVocabWord,
+    deleteVocabWord, getAllCategories,
+    createCategory, updateCategory,
+    deleteCategory, searchVocabWords
 };
