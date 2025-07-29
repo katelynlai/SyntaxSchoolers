@@ -15,12 +15,17 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         })
     }
 
+    console.log("Request Payload:", options);
+    console.log("Sending:", form.get("username"), form.get("password"));
+
+
     const response = await fetch("http://localhost:3000/users/login", options);
     const data = await response.json();
+    console.log(data)
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
-        window.location.assign("board.html");
+        window.location.assign("landing_page.html");
       } else {
         alert(data.error);
       }
