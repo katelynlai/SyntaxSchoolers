@@ -13,31 +13,30 @@
 
   <pre class="mermaid">
 erDiagram
-    USERS ||--o{ LINEITEM: places
-    VOCAB ||--|{ LINEITEM: contains
-    CATEGORY ||--|{ LINEITEM: belongs_to
-    LEVELPROGRESS ||--|{ LINEITEM: tracks
-    
+    users ||--o{ levelProgress: references
+    users ||--O{ overallProgress: references
+    category ||--o{ vocab: references
+        
 
-    USERS {
+    users {
         user_id integer "PK"
-        first_name varchar "not null"
-        last_name varchar "not null"
-        username varchar "not null, unique"
-        password varchar "hashed"
-        role varchar "'students' or 'staff'"
+        first_name varchar(100) "not null"
+        last_name varchar(100) "not null"
+        username varchar(50) "unique, not null"
+        password varchar(255) "hashed, not null"
+        role varchar(20) "'student' or 'staff'"
     }
-    VOCAB {
+    vocab {
         vocab_id integer "PK"
-        lang1_word varchar "not null"
-        lang2_word varchar "not null"
-        category_id varchar "foreign key"
+        lang1_word varchar(255) "not null"
+        lang2_word varchar(255) "not null"
+        category_id varchar "FK"
     }
-    CATEGORY {
+    category {
         category_id integer "PK"
-        category_name varchar "not null"
+        category_name varchar(100) "not null"
     }
-    LEVELPROGRESS {
+    levelProgress {
         level_progress_id integer "PK"
         user_id integer "FK"
         level_id integer "not null"
@@ -46,9 +45,9 @@ erDiagram
         total_questions integer "not null"
         level_status boolean "'pass' or 'fail'" 
     }
-    OVERALLPROGRESS {
-        overall_progress_id varchar "PK"
-        user_id varchar "FK"
+    overallProgress {
+        overall_progress_id integer "PK"
+        user_id integer "FK"
         level_status boolean "'pass' or 'fail'"
     }
 
