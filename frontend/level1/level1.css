@@ -1,41 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+    --accent-color: blue;
+    --accent2-color: #7579f7;
+    --base-color: white;
+    --text-color: blue;
+    --input-colour: white;
+    --input2-color: grey;
+}
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: white;
-    min-height: 100vh;
-    color: black;
-    overflow-x: hidden;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: url(../assests/french-flag-background.jpg);
+    background-color: var(--base-color);
+    color: var(--accent-color);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    padding: 20px 50px;
+    background-color: var(--base-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);    
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: var(--base-color);;
 }
 
 .header {
-    position: relative;
-    text-align: center;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+.close-btn {
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
 }
 
 .progress-bar {
-    width: 100%;
-    max-width: 300px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    margin: 10px auto;
-    overflow: hidden;
+  flex: 1;
+  height: 24px;
+  background-color: var(--input2-color);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .progress-fill {
-    height: 100%;
-    background: #4CAF50;
-    border-radius: 10px;
-    transition: width 0.3s ease;
-    width: 0%;
+  background-color: var(--accent-color);
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-weight: bold;
 }
 
 .level-info {
@@ -52,6 +131,40 @@ body {
     font-weight: bold;
 }
 
+.blank {
+  min-width: 150px;
+  height: 28px;
+  background-color: var(--input-colour);
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.navigation-buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin-left: 50;
+  margin-right: auto;
+}
+
+.navigation-buttons button {
+  background-color: var(--accent-color);
+  color: var(--input-colour);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-buttons button:hover {
+  background-color: var(--accent-color);
+}
 
 .game-container {
     max-width: 900px;
@@ -80,8 +193,8 @@ body {
 }
 
 .word-card {
-    background: rgba(255, 255, 255, 0.95);
-    color: #333;
+    background: var(--input-colour);
+    color: var(--input2-color);
     padding: 12px 16px;
     border-radius: 12px;
     text-align: center;
@@ -104,9 +217,9 @@ body {
 }
 
 .word-card.selected {
-    border-color: #667eea;
-    background: rgba(102, 126, 234, 0.1);
-    transform: translateY(-1px);
+    border-color: var(--accent-color);
+    background: var(--accent2-color);
+    /*transform: translateY(-1px);*/
 }
 
 .word-card.correct {
@@ -140,16 +253,14 @@ body {
 }
 
 .btn {
-    background: rgba(38, 31, 31, 0.2);
-    color: black;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: var(--accent-color);
+    color: var(--input-colour);
     padding: 12px 30px;
     border-radius: 25px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease;
     margin: 0 10px;
 }
 

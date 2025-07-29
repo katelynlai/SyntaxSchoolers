@@ -4,18 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level 1 - SyntaxSchoolers</title>
-    <link rel="stylesheet" href="level1.css">
+    <link rel="stylesheet" href="../level1/level1.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Level 1: Vocabulary Match</h1>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
-        <div class="level-info">
-            <div class="score">Score: <span id="score">0</span></div>
-        </div>
+    <nav>
+        <div class="logo">VivaLingo</div>
+        <ul class="nav-links">
+            <li><a href="../frontend/homepage/homepage.html">Go Home</a></li>
+            <li><a href="../frontend/loginPage/login.html">Log Out</a></li>
+        </ul>
+        <button class="close-btn">
+            <a href="../homepage/homepage.html">X</a>
+        </button>
+    </nav>
+
+      <div class="container">
+    <div class="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
     </div>
+    <span class="progress-text" id="progress-text">0%</span>
+  </div>
+
+    <div class="header">
+      <h1>Level 1</h1>
+    </div>
+    <h3 class="instruction">Fill in the Blank!</h3>
+
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">
+            </div>
+            <div>
+                <div class="level-info">
+                <div class="score">Score: <span id="score">0</span></div>
+            </div>
+        </div>
+        <h1>Level 1</h1>
+    </div>
+    <h3 class="instruction">Match the Vocab!</h3>
 
     <div class="game-container">
         <div class="question-counter">
@@ -242,5 +270,9 @@
         // Auto-start when page loads
         // window.addEventListener('load', startGame);
     </script>
+    <div class="navigation-buttons">
+        <button id="go-back">← Go Back</button>
+        <button id="next-round">Next Round →</button>
+    </div>
 </body>
 </html>
