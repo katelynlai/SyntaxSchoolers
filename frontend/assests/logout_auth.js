@@ -1,4 +1,4 @@
 document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('token');
-    window.location.assign('./login.html')
+    window.location.assign('../loginPage/login.html')
 })
