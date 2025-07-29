@@ -164,12 +164,22 @@ a:hover{
     color: white;
 }
 
-.btn-info.student-btn-click-start {
+.student-btn-click-start {
     display: flex;
-    border: 2px solid black !important;
-    font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
-    font-weight: bold;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: background-color 0.3s;
     align-self: center;
+    color: var(--base-color) !important; /* ensure white text */
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.student-btn-click-start:hover {
+    background-color: darkblue;
 }
 
 /* Student levels */
@@ -199,6 +209,7 @@ a:hover{
     text-align: left;
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 12pt;
+    margin-bottom: 2em;
 }
 
 /* Teacher controls */
@@ -208,3 +219,10 @@ a:hover{
     padding: 50px !important;
     border: 2px solid black !important;
 }
+
+.play-test {
+    margin: 75px 10px 0 0;
+    padding: 50px !important;
+    border: 2px solid black !important;
+}
+

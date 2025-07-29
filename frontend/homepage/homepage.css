@@ -10,7 +10,7 @@ body{
     margin: 0;
     font-family: 'Poppins', sans-serif;
     padding: 0;
-    background-image: url(../assests/eiffeltower.jpg);
+    background-image: url(../assets/eiffeltower.jpg);
     background-size: cover;
     background-position: right;
 }
