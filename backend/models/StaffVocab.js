@@ -189,25 +189,29 @@ class StaffVocab {
         }
     }
 
-  // DELETE: Remove category and its vocab words
-static async deleteCategory(categoryId) {
-    try {
-        // First, delete vocab words in this category
-        await db.query(`DELETE FROM vocab WHERE category_id = $1`, [categoryId]);
-
-        // Then, delete the category itself
-        const query = `DELETE FROM category WHERE category_id = $1 RETURNING *`;
-        const result = await db.query(query, [categoryId]);
-
-        if (result.rows.length === 0) {
-            throw new Error('Category not found');
+    // DELETE: Remove category 
+    static async deleteCategory(categoryId) {
+        try {
+            // Check if category has any words
+            const checkQuery = `SELECT COUNT(*) FROM vocab WHERE category_id = $1`;
+            const checkResult = await db.query(checkQuery, [categoryId]);
+            
+            if (parseInt(checkResult.rows[0].count) > 0) {
+                throw new Error('Cannot delete category that contains vocabulary words');
+            }
+            
+            const query = `DELETE FROM category WHERE category_id = $1 RETURNING *`;
+            const result = await db.query(query, [categoryId]);
+            
+            if (result.rows.length === 0) {
+                throw new Error('Category not found');
+            }
+            
+            return result.rows[0];
+        } catch (error) {
+            throw new Error(`Error deleting category: ${error.message}`);
         }
-
-        return result.rows[0];
-    } catch (error) {
-        throw new Error(`Error deleting category: ${error.message}`);
     }
-}
 
     // UTILITY: Search vocabulary words
     static async searchVocabWords(searchTerm, categoryFilter = null) {
@@ -231,7 +235,7 @@ static async deleteCategory(categoryId) {
                 params.push(categoryFilter);
             }
             
-            query += ` ORDER BY v.created_at DESC`;
+            query += ` ORDER BY v.vocab_id DESC`;
             
             const result = await db.query(query, params);
             return result.rows;
