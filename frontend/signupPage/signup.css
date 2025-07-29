@@ -142,11 +142,3 @@ a:hover{
         width: min(600px, 100%)
     }
 }
-
-form div.incorrect label{
-    background-color: red;
-}
-
-form div.incorrect input{
-    border-color: red;
-}
