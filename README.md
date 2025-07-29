@@ -15,4 +15,23 @@ The aim of the app is to provide fun and engaging way of learning a non-STEM sub
 
 ## Entity Relationship Diagram (ERD)
 
-
+```
+erDiagram
+    erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+        string name
+        string custNumber
+        string sector
+    }
+    ORDER ||--|{ LINE-ITEM : contains
+    ORDER {
+        int orderNumber
+        string deliveryAddress
+    }
+    LINE-ITEM {
+        string productCode
+        int quantity
+        float pricePerUnit
+    }
+```
