@@ -46,6 +46,11 @@ erDiagram
         total_questions integer "not null"
         level_status boolean "'pass' or 'fail'" 
     }
+    OVERALLPROGRESS {
+        overall_progress_id varchar "PK"
+        user_id varchar "FK"
+        level_status boolean "'pass' or 'fail'"
+    }
 
   </pre>
 </body>
