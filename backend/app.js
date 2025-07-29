@@ -5,7 +5,8 @@ const cors = require('cors');
 const path = require('path');
 
 // Import Level 1 routes
-const levelRoutes = require('./routers/level1Routes');
+//const levelRoutes = require('./routers/level1Routes');
+const level2Routes = require('./routers/Level2Routes')
 
 const app = express();
 
@@ -13,6 +14,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/levels', level2Routes)
 
 // Serve static files from frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -37,16 +40,15 @@ app.use('/api/levels', (req, res, next) => {
 });
 
 // Level 1 Routes
-app.use('/api/levels', levelRoutes);
 
 // Serve frontend pages
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/homepage.html'));
 });
 
-app.get('/level1', (req, res) => {
+/*app.get('/level1', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/level1/level1.html'));
-});
+});*/
 
 app.get('/level2', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/level2.html'));
