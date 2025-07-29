@@ -20,7 +20,7 @@ html{
 
 body{
     min-height: 100vh;
-    background-image: url(../assests/eiffeltower.jpg);
+    background-image: url(../assets/eiffeltower.jpg);
     background-size: cover;
     background-position: right;
     overflow: hidden;
@@ -145,19 +145,6 @@ a:hover{
 
 /* for Dashboard pages */ 
 
-.student-dashboard {
-    box-sizing: border-box;
-    background-color: var(--base-color);
-    height: 100vh;
-    width: max(20%, 600px);
-    padding: 10px;
-    border-radius: 0 20px 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .student-dashboard-heading {
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 2rem;
@@ -165,6 +152,7 @@ a:hover{
     text-transform: uppercase;
     margin-top: 30px;  
     margin-left: 20px;
+    color: white;
 }
 
 .student-name {
@@ -173,13 +161,24 @@ a:hover{
     font-size: 1rem;
     font-weight: 900;
     text-transform: uppercase;
+    color: white;
+
+}
+
+.dashboard-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-left: 20px;
 }
 
 .btn-info.student-btn-click-start {
-    margin-left: 20px !important;
+    display: flex;
     border: 2px solid black !important;
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-weight: bold;
+    align-self: center;
 }
 
 .student-levels {
@@ -189,7 +188,9 @@ a:hover{
     border: 2px solid black;
     margin: auto 0;
     margin-left: 20px;
+    margin-right: 50px;
     padding: 60px;
+    align-self: flex-end;
 }
 
 .student-level {
