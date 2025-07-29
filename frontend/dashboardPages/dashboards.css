@@ -164,20 +164,22 @@ a:hover{
     color: white;
 }
 
-.dashboard-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    margin-left: 20px;
-}
-
 .btn-info.student-btn-click-start {
     display: flex;
     border: 2px solid black !important;
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-weight: bold;
     align-self: center;
+}
+
+/* Student levels */
+
+.dashboard-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-left: 20px;
 }
 
 .student-levels {
@@ -197,4 +199,12 @@ a:hover{
     text-align: left;
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 12pt;
+}
+
+/* Teacher controls */
+
+.teacher-controls {
+    margin: 75px 10px 0 0;
+    padding: 50px !important;
+    border: 2px solid black !important;
 }
