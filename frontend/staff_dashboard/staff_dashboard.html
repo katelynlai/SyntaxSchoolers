@@ -107,6 +107,16 @@
                     <div id="categories-list"></div>
                 </div>
                 <div id="add-category-results" class="results" style="display: none;"></div>
+
+                <div class="form-section">
+                    <h3>Delete Category</h3>
+                    <select id="delete-category-select">
+                        <option value="">Select Category</option>
+                    </select>
+                    <button class="btn btn-danger" onclick="deleteCategoryFrontend()">Delete Category</button>
+                    <div id="delete-category-results" class="results" style="display: none;"></div>
+                </div>
+
                 <div class="form-section">
                     <h3>Add New Word</h3>
                     <input type="text" id="new-english" placeholder="English word">
@@ -117,13 +127,12 @@
                     <button class="btn" onclick="createWord()">Add Word</button>
                     <div id="add-word-results" class="results" style="display: none;"></div>
                 </div>
-                
+
                 <div class="form-section">
                     <h3>Edit/Delete Words</h3>
                     <input type="number" id="edit-word-id" placeholder="Enter word ID">
                     <button class="btn btn-secondary" onclick="loadWordForEdit()">Load Word</button>
                     <button class="btn btn-danger" onclick="deleteWord()">Delete</button>
-                    
                     <div id="edit-word-form" style="display: none; margin-top: 10px;">
                         <input type="text" id="edit-english" placeholder="English">
                         <input type="text" id="edit-french" placeholder="French">
@@ -131,7 +140,7 @@
                         <button class="btn" onclick="updateWord()">Update Word</button>
                     </div>
                 </div>
-                
+
                 <div id="edit-results" class="results" style="display: none;"></div>
             `;
         }
@@ -324,7 +333,7 @@
         }
 
         function populateSelects() {
-            ['filter-category', 'new-word-category', 'edit-word-category'].forEach(selectId => {
+            ['filter-category', 'new-word-category', 'edit-word-category', 'delete-category-select'].forEach(selectId => {
                 const select = document.getElementById(selectId);
                 if (select) {
                     const firstOption = select.children[0];
@@ -336,6 +345,24 @@
                 }
             });
         }
+
+        // Delete Category (frontend) - must be global for HTML onclick
+        async function deleteCategoryFrontend() {
+            const select = document.getElementById('delete-category-select');
+            const categoryId = select.value;
+            if (!categoryId) return alert('Please select a category to delete');
+            if (!confirm('Are you sure you want to delete this category and all its words?')) return;
+
+            const data = await apiCall(`/categories/${categoryId}`, { method: 'DELETE' });
+            if (data.success) {
+                select.value = '';
+                loadCategoriesForEdit();
+                showResult('delete-category-results', data.message || 'Success');
+            } else {
+                showResult('delete-category-results', data, true);
+            }
+        }
+    // (no code here, removed duplicate/erroneous block)
 
         function showResult(elementId, data, isError = false) {
             const element = document.getElementById(elementId);
