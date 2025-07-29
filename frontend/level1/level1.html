@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 - SyntaxSchoolers</title>
+    <link rel="stylesheet" href="level1.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Level 1: Vocabulary Match</h1>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="level-info">
+            <div class="score">Score: <span id="score">0</span></div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="question-counter">
+            Progress: <span id="currentProgress">0</span> / <span id="totalQuestions">10</span> completed
+        </div>
+
+        <div id="loadingScreen" class="loading">
+            🔄 Loading vocabulary questions...
+        </div>
+
+        <div id="gameArea" class="game-area hidden">
+            <div class="word-column" id="englishColumn">
+                <h3 style="text-align: center; margin-bottom: 10px;">English</h3>
+            </div>
+            <div class="word-column" id="frenchColumn">
+                <h3 style="text-align: center; margin-bottom: 10px;">Français</h3>
+            </div>
+        </div>
+
+        <div id="messageArea" class="message hidden">
+            <p id="messageText"></p>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="startGame()" id="startBtn">Start Game</button>
+            <button class="btn primary" onclick="submitLevel()" id="submitBtn" style="display: none;">✅ Submit Level</button>
+            <button class="btn" onclick="nextLevel()" id="nextBtn" style="display: none;">➡️ Next Level</button>
+        </div>
+    </div>
+
+    <script>
+        // Simple frontend state
+        let gameState = {
+            questions: [],
+            currentRound: 0,
+            score: 0,
+            answers: []
+        };
+
+        async function startGame() {
+            // Hide the Start Game button
+            document.getElementById('startBtn').style.display = 'none';
+            showMessage('Loading questions...', 'info');
+
+            try {
+                const response = await fetch('/api/levels/1/start', {
+                    method: 'POST'
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    gameState.questions = data.data.questions;
+                    setupGame();
+                } else {
+                    showMessage('Failed to start game: ' + data.message, 'error');
+                    // Show Start Game button again if there's an error
+                    document.getElementById('startBtn').style.display = 'inline-block';
+                }
+            } catch (error) {
+                showMessage('Error connecting to server. Please try again.', 'error');
+                // Show Start Game button again if there's an error
+                document.getElementById('startBtn').style.display = 'inline-block';
+            }
+        }
+
+        function setupGame() {
+            document.getElementById('loadingScreen').classList.add('hidden');
+            document.getElementById('gameArea').classList.remove('hidden');
+
+            // Show all questions at once (simplified)
+            displayAllWords();
+            updateUI();
+        }
+
+        function displayAllWords() {
+            const englishColumn = document.getElementById('englishColumn');
+            const frenchColumn = document.getElementById('frenchColumn');
+
+            englishColumn.innerHTML = '<h3 style="text-align: center; margin-bottom: 10px;">English</h3>';
+            frenchColumn.innerHTML = '<h3 style="text-align: center; margin-bottom: 10px;">Français</h3>';
+
+            // Show all English words
+            gameState.questions.forEach(q => {
+                const card = createWordCard(q.englishWord, 'english', q.vocabId);
+                englishColumn.appendChild(card);
+            });
+
+            // Show all French words (shuffled)
+            const shuffled = [...gameState.questions].sort(() => Math.random() - 0.5);
+            shuffled.forEach(q => {
+                const card = createWordCard(q.frenchWord, 'french', q.vocabId);
+                frenchColumn.appendChild(card);
+            });
+        }
+
+        function createWordCard(text, type, wordId) {
+            const card = document.createElement('div');
+            card.className = 'word-card';
+            card.textContent = text;
+            card.dataset.type = type;
+            card.dataset.wordId = wordId; // This creates data-word-id attribute
+            card.addEventListener('click', () => selectCard(card, type, wordId));
+            return card;
+        }
+
+        let selectedEnglish = null;
+        let selectedFrench = null;
+
+        function selectCard(card, type, wordId) {
+            // Remove previous selections of this type
+            document.querySelectorAll(`.word-card[data-type="${type}"]`).forEach(c => {
+                c.classList.remove('selected');
+            });
+
+            card.classList.add('selected');
+
+            if (type === 'english') {
+                selectedEnglish = wordId;
+            } else {
+                selectedFrench = wordId;
+            }
+
+            // Check if both selected
+            if (selectedEnglish && selectedFrench) {
+                checkMatch();
+            }
+        }
+
+        function checkMatch() {
+            const englishCard = document.querySelector(`[data-type="english"][data-word-id="${selectedEnglish}"]`);
+            const frenchCard = document.querySelector(`[data-type="french"][data-word-id="${selectedFrench}"]`);
+
+            if (selectedEnglish === selectedFrench) {
+                // Correct!
+                englishCard.classList.add('correct');
+                frenchCard.classList.add('correct');
+                englishCard.style.pointerEvents = 'none';
+                frenchCard.style.pointerEvents = 'none';
+
+                gameState.score += 10;
+                gameState.answers.push({
+                    englishId: selectedEnglish,
+                    frenchId: selectedFrench
+                });
+
+                showMessage('Correct!', 'success');
+
+                // Check if all done
+                if (gameState.answers.length === gameState.questions.length) {
+                    setTimeout(() => {
+                        document.getElementById('submitBtn').style.display = 'inline-block';
+                        showMessage('All matches complete! Submit your answers.', 'success');
+                    }, 1000);
+                }
+            } else {
+                // Wrong
+                englishCard.classList.add('incorrect');
+                frenchCard.classList.add('incorrect');
+                showMessage('Try again!', 'error');
+
+                setTimeout(() => {
+                    englishCard.classList.remove('incorrect', 'selected');
+                    frenchCard.classList.remove('incorrect', 'selected');
+                }, 1000);
+            }
+
+            // Reset selections
+            selectedEnglish = null;
+            selectedFrench = null;
+            updateUI();
+        }
+
+        async function submitLevel() {
+            try {
+                const response = await fetch('/api/levels/1/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        answers: gameState.answers
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(`Level 1 Complete! Score: ${data.data.percentage}%`, 'success');
+                    document.getElementById('submitBtn').style.display = 'none';
+                    document.getElementById('nextBtn').style.display = 'inline-block';
+                }
+            } catch (error) {
+                showMessage('Error submitting level.', 'error');
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('score').textContent = gameState.score;
+            document.getElementById('currentProgress').textContent = gameState.answers.length;
+            document.getElementById('totalQuestions').textContent = gameState.questions.length;
+
+            const progress = (gameState.answers.length / gameState.questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showMessage(text, type) {
+            const messageArea = document.getElementById('messageArea');
+            const messageText = document.getElementById('messageText');
+
+            messageText.textContent = text;
+            messageArea.classList.remove('hidden');
+
+            // Show score messages longer (5 seconds), regular messages shorter (2 seconds)
+            const duration = text.includes('Score:') || text.includes('Complete') ? 5000 : 2000;
+
+            setTimeout(() => {
+                messageArea.classList.add('hidden');
+            }, duration);
+        }
+
+        function nextLevel() {
+            // Navigate to Level 2 (or next available level)
+            window.location.href = '/level2';
+        }
+
+        // Auto-start when page loads
+        // window.addEventListener('load', startGame);
+    </script>
+</body>
+</html>

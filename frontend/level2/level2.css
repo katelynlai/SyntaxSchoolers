@@ -11,10 +11,10 @@
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--base-color);
     color: var(--accent-color);
-    background-image: url(../frontend/assests/french-flag-background.jpg);
+    background-image: url(../assests/french-flag-background.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
