@@ -6,6 +6,8 @@ const path = require('path');
 
 // Import Level 1 routes
 const levelRoutes = require('./routers/level1Routes');
+// Import Staff routes
+const staffRoutes = require('./routers/staffRoutes');
 
 const app = express();
 
@@ -21,17 +23,14 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.get('/api/health', (req, res) => {
     res.status(200).json({ 
         status: 'OK', 
-        message: 'SyntaxSchoolers API is running',
-        timestamp: new Date().toISOString()
-    });
+        message: 'SyntaxSchoolers API is running'
+        });
 });
 
 // Temporary middleware to simulate authentication (until auth team finishes)
 app.use('/api/levels', (req, res, next) => {
-    // TODO: Replace this with real authentication middleware
-    // For now, simulate a logged-in user for testing
     req.user = {
-        id: 1 // This will be the test user ID
+        id: 1 
     };
     next();
 });
@@ -39,7 +38,10 @@ app.use('/api/levels', (req, res, next) => {
 // Level 1 Routes
 app.use('/api/levels', levelRoutes);
 
-// Serve frontend pages
+// Staff Routes for teachers (CRUD operations)
+app.use('/api/staff', staffRoutes);
+
+// Frontend pages
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/homepage.html'));
 });
@@ -50,6 +52,14 @@ app.get('/level1', (req, res) => {
 
 app.get('/level2', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/level2.html'));
+});
+
+app.get('/staff', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/staff_dashboard/staff_dashboard.html'));
+});
+
+app.get('/level3', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/level3.html'));
 });
 
 // 404 handler for API routes
