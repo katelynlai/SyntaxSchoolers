@@ -125,9 +125,18 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 16px;
-  font-size: 1.1rem;
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 50px;
+}
+
+.drop-zone {
+  display: inline-block;
+  width: 100px;
+  min-height: 1.5em;
+  border-bottom: 2px solid #555;
+  margin: 0 5px;
+  vertical-align: middle;
 }
 
 .blank {
@@ -144,19 +153,39 @@ h1 {
   gap: 30px;
 }
 
+#options-container {
+  display: flex;
+  justify-content: center; /* centers options horizontally */
+  flex-wrap: wrap;         /* allows options to wrap to next line if needed */
+  gap: 12px;               /* space between options */
+  margin-top: 20px;        /* optional spacing from above elements */
+}
+
+#english-translation {
+  display: flex;
+  justify-content: center; /* centers options horizontally */
+  font-style: italic; 
+  color: #555;"
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
 .option {
-  background-color: var(--accent-color);
+  background: #3e4352;
   color: var(--base-color);
   border: none;
   border-radius: 6px;
   padding: 14px 24px;
   font-weight: bold;
+  font-size: 15px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-right: 12px;
 }
 
 .option:hover {
-  background-color: var(--base-color);
+  opacity: 0.7;
 }
 
 .blank {
