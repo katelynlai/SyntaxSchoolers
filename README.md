@@ -25,6 +25,10 @@ A visualisation of the importance of each stakeholder can be viewed in this stak
 
 ## Risk Analysis
 
+Here are some examples of risks to the project.
+
+<img src="frontend/assets/VivaLingo_RiskAssessmentGrid_screenshot.png">
+
 ## Entity Relationship Diagram (ERD)
 
 The database structure for this app can be visualised as follows. This ERD was created with Mermaid.js.
