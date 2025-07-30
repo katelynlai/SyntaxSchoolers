@@ -25,7 +25,7 @@ A visualisation of the importance of each stakeholder can be viewed in this stak
 
 ## Risk Analysis
 
-Here are some examples of risks to the project.
+Here are some examples of risks and market analysis to the project.
 
 <img src="frontend/assets/VivaLingo_RiskAssessmentGrid_screenshot.png">
 
@@ -40,5 +40,15 @@ The database structure for this app can be visualised as follows. This ERD was c
 We used Trello to structure our work in terms of tasks completed. 
 
 <img src="frontend/assets/VivaLingo_Trello_screenshot.png">
+
+## Technical Architecture
+
+User Interface: HTML, CSS, JavaScript, Jest
+Backend Services: Node, Express
+Data Storage: SQL, Supabase
+Data Schema visualisation: Mermaid
+Infrastructure: Git
+
+## Development Challenges
 
 
