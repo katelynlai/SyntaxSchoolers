@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Language Learning Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 400px;
+      margin: auto;
+    }
+    button {
+      width: 100%;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Language Learning Dashboard</h1>
+
+  <button id="level-1-btn">Level 1</button>
+  <button id="level-2-btn" disabled>Level 2 (Locked)</button>
+  <button id="level-3-btn" disabled>Level 3 (Locked)</button>
+
+  <script>
+    // Placeholder for your progress loading logic
+    async function loadDashboard() {
+      // Example static progress object — replace with fetch from backend
+      const progress = {
+        level_1_complete: false,
+        level_2_complete: false,
+        level_3_complete: false,
+        all_levels_complete: false,
+      };
+
+      const level1Btn = document.getElementById('level-1-btn');
+      const level2Btn = document.getElementById('level-2-btn');
+      const level3Btn = document.getElementById('level-3-btn');
+
+      level1Btn.disabled = false; // always enabled
+
+      if (progress.level_1_complete) {
+        level2Btn.disabled = false;
+        level2Btn.textContent = "Level 2";
+      } else {
+        level2Btn.disabled = true;
+        level2Btn.textContent = "Level 2 (Locked)";
+      }
+
+      if (progress.level_2_complete) {
+        level3Btn.disabled = false;
+        level3Btn.textContent = "Level 3";
+      } else {
+        level3Btn.disabled = true;
+        level3Btn.textContent = "Level 3 (Locked)";
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadDashboard);
+  </script>
+</body>
+</html>
