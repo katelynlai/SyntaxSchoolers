@@ -87,7 +87,7 @@ INSERT INTO level (level_name) VALUES
 
 INSERT INTO sentences (english, french, shuffled, category_id, level_id) VALUES
 ('Where is the station?', 'Où est la gare ?', 'est Où gare la ?', 1, 3),
-('I need a ticket', 'J’ai besoin d’un billet', 'besoin billet J’ai d’un', 1, 3),
+('I need a ticket', 'Je dois acheter un billet', 'acheter Je un billet dois', 1, 3),
 ('Do you speak English?', 'Parlez-vous anglais ?', 'anglais ? Parlez-vous', 1, 3),
 ('I lost my luggage', 'J’ai perdu mes bagages', 'mes J’ai perdu bagages', 1, 3),
 ('Can you help me?', 'Pouvez-vous m’aider ?', 'm’aider Pouvez-vous ?', 1, 3);
@@ -104,7 +104,7 @@ INSERT INTO sentences (english, french, shuffled, category_id, level_id) VALUES
 INSERT INTO sentences (english, french, shuffled, category_id, level_id) VALUES
 ('What time is it?', 'Quelle heure est-il ?', 'Quelle heure ? est-il', 3, 3),
 ('It is ten o"clock', 'Il est dix heures', 'dix heures Il est', 3, 3),
-('Today is Monday', 'Aujourd’hui, c’est lundi', 'c’est Aujourd’hui lundi', 3, 3),
+('It is Thursday', 'C’est jeudi', 'C’est jeudi', 3, 3),
 ('My birthday is in July', 'Mon anniversaire est en juillet', 'en Mon est juillet anniversaire', 3, 3),
 ('We are meeting at 3 PM', 'Nous nous retrouvons à quinze heures', 'à quinze Nous heures retrouvons nous', 3, 3);
 
