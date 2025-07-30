@@ -27,7 +27,7 @@ describe('Login Form', () => {
     });
 
     cy.wait('@login');
-    cy.url().should('include', '/landing_page');
+    cy.url().should('include', '/user_dashboard.html');
     cy.window().then((win) => {
       expect(win.localStorage.getItem('token')).to.eq('fake-jwt-token');
     });
