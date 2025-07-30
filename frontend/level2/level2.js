@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll('.option');
     const nextRoundButton = document.getElementById('next-round');
 
-    fetch('/api/levels/2/question')
+    fetch('http://localhost:3000/api/levels/2/question')
         .then(res => res.json())
         .then(data => {
             if (!data.success) throw new Error("Backend error");
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 button.style.backgroundColor = 'var(--accent-color)';
                 button.disabled = false;
                 button.textContent = options[i];
-,
+
                 button.onclick = () => {
                     if (button.textContent === correctWord) {
                         button.style.backgroundColor = 'green';
