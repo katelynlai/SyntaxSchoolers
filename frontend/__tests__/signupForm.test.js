@@ -1,6 +1,9 @@
-import { getByLabelText, getByPlaceholderText, getByRole, getByText } from '@testing-library/dom';
-import '@testing-library/jest-dom';
-import { beforeEach } from 'node:test';
+/**
+ * @jest-environment jest-environment-jsdom
+ */
+
+const { getByPlaceholderText } = require('@testing-library/dom');
+require('@testing-library/jest-dom');
 
 const html = 
 `
@@ -17,14 +20,21 @@ const html =
   </select>
   <button type="submit">Signup</button>
 </form>
-`
+`;
 
 describe('Signup form', () => {
   beforeEach(() => {
-    document.body.innerHTML - html;
+    document.body.innerHTML = html;
   });
 
+  test('renders all required input fields', () => {
+    expect(getByPlaceholderText(document.body, 'Firstname')).toBeInTheDocument();
+    expect(getByPlaceholderText(document.body, 'Surname')).toBeInTheDocument();
+    expect(getByPlaceholderText(document.body, 'Username')).toBeInTheDocument();
+    expect(getByPlaceholderText(document.body, 'Password')).toBeInTheDocument();
+    expect(getByPlaceholderText(document.body, 'Repeat Password')).toBeInTheDocument()
+
+  })
 
 
-  
 })
