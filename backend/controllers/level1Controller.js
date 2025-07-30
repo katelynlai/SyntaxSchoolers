@@ -29,10 +29,10 @@ class SimpleLevelController {
         try {
             const userId = req.user.id;
             const { answers } = req.body; // Array of {englishId, frenchId} pairs
-            
+
             // Get questions to validate against
             const questions = await Level.getLevel1Questions();
-            
+
             // Count correct answers
             let correctCount = 0;
             answers.forEach(answer => {
@@ -40,12 +40,20 @@ class SimpleLevelController {
                     correctCount++;
                 }
             });
-            
+
             // Save to database
             const result = await Level.submitLevel1Answers(userId, correctCount, questions.length);
-            
+
+            // Update overallprogress: set level_1_complete = true
+            const db = require('../database/connect');
+            await db.query(`
+                INSERT INTO overallprogress (user_id, level_1_complete)
+                VALUES ($1, true)
+                ON CONFLICT (user_id) DO UPDATE SET level_1_complete = true
+            `, [userId]);
+
             const percentage = Math.round((correctCount / questions.length) * 100);
-            
+
             res.status(200).json({
                 success: true,
                 message: 'Level 1 completed!',
