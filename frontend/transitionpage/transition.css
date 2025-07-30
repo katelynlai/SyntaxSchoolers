@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+:root {
+  --accent-color: blue;
+  --base-color: white;
+  --text-color: blue;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: url(../assests/eiffeltower.jpg);
+  background-size: cover;
+  background-position: center;
+  color: var(--base-color);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: var(--base-color);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: var(--text-color);
+}
+
+.transition-container {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.transition-container h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.transition-container p {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+#score-value {
+  font-weight: bold;
+  color: yellow;
+}
+
+.start-btn {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--base-color);
+  font-weight: bold;
+}
+
+.start-btn:hover {
+  background-color: darkblue;
+}
