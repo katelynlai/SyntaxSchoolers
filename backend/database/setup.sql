@@ -78,7 +78,6 @@ INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES
 
 -- Time & Date (category_id = 3)
 INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
-    ('today', 'aujourd\'hui', 3),
     ('tomorrow', 'demain', 3),
     ('yesterday', 'hier', 3),
     ('morning', 'matin', 3),

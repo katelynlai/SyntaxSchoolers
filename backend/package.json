@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon -L index.js",
+    "setup-db": "node ./database/setup.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",

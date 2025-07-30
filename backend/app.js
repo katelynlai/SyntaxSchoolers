@@ -15,6 +15,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Temporary middleware to simulate authentication (until auth team finishes)
+app.use('/api/levels', (req, res, next) => {
+    // TODO: Replace this with real authentication middleware
+    // For now, simulate a logged-in user for testing
+    req.user = {
+        id: 1 // This will be the test user ID
+    };
+    next();
+});
+
 app.use('/api/levels', level2Routes)
 
 // Serve static files from frontend
@@ -29,21 +39,9 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// Temporary middleware to simulate authentication (until auth team finishes)
-app.use('/api/levels', (req, res, next) => {
-    // TODO: Replace this with real authentication middleware
-    // For now, simulate a logged-in user for testing
-    req.user = {
-        id: 1 // This will be the test user ID
-    };
-    next();
-});
-
-// Level 1 Routes
-
 // Serve frontend pages
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/homepage.html'));
+    res.sendFile(path.join(__dirname, '..frontend/homepage/homepage.html'));
 });
 
 /*app.get('/level1', (req, res) => {
@@ -51,7 +49,7 @@ app.get('/', (req, res) => {
 });*/
 
 app.get('/level2', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/level2.html'));
+    res.sendFile(path.join(__dirname, '../frontend/level2/level2.html'));
 });
 
 // 404 handler for API routes

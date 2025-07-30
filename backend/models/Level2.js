@@ -1,7 +1,6 @@
-const db = require('../database/connect');
+const db = require('./backend/controllers/database/connect');
 
 class Level2 {
-    // Get one sentence with one correct word and three distractors
     static async getLevel2Question(categoryId = 1) {
         try {
             const query = `
@@ -19,13 +18,12 @@ class Level2 {
                 throw new Error('Not enough vocab entries in this category.');
             }
 
-            const correct = result.rows[0]; // Assume first is correct
+            const correct = result.rows[0]; 
             const options = result.rows.map(row => row.lang2_word);
 
-            // Shuffle options
             const shuffledOptions = options.sort(() => Math.random() - 0.5);
 
-            const sentence = `Je vais à la ___.`; // Can be extended later with sentence templates
+            const sentence = `Je vais à la ___.`; 
 
             return {
                 sentence: sentence,
