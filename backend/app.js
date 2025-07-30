@@ -4,8 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
-// Import Level 1 routes
-//const levelRoutes = require('./routers/level1Routes');
+// Import Level 2 routes
 const level2Routes = require('./routers/Level2Routes')
 
 const app = express();
@@ -15,20 +14,20 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+
 // Temporary middleware to simulate authentication (until auth team finishes)
 app.use('/api/levels', (req, res, next) => {
-    // TODO: Replace this with real authentication middleware
-    // For now, simulate a logged-in user for testing
     req.user = {
         id: 1 // This will be the test user ID
     };
     next();
 });
 
+//level 2 api route
 app.use('/api/levels', level2Routes)
 
-// Serve static files from frontend
-app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -41,12 +40,9 @@ app.get('/api/health', (req, res) => {
 
 // Serve frontend pages
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..frontend/homepage/homepage.html'));
+    res.sendFile(path.join(__dirname, '../frontend/homepage/homepage.html'));
 });
 
-/*app.get('/level1', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/level1/level1.html'));
-});*/
 
 app.get('/level2', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/level2/level2.html'));

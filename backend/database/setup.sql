@@ -71,75 +71,61 @@ INSERT INTO category (category_name) VALUES
     ('Directions'),
     ('Time & Date');
 
-INSERT INTO sentences (english, full_french, missing_index, category_id) VALUES
-('Where is the hotel?', 'Où est l’hôtel ?', 2, 1),  -- missing 'hôtel'
-('I need a passport', 'J’ai besoin d’un passeport', 4, 1); -- missing 'passeport'
+INSERT INTO sentences (english, french, missing_index, category_id) VALUES
+--Abroad
+('Where is the hotel?', 'Où est l’hôtel ?', 2, 1),
+('I need a passport', 'J’ai besoin d’un passeport', 3, 1),
+('I lost my luggage', 'J’ai perdu mes bagages', 3, 1),
+('Can you help me?', 'Pouvez-vous m’aider ?', 2, 1),
+-- Directions
+('Turn left at the corner', 'Tournez à gauche au coin', 3, 2),
+('Go straight ahead', 'Allez tout droit', 1, 2),
+('Take the second street on the right', 'Prenez la deuxième rue à droite', 5, 2),
+('Is it far from here?', 'Est-ce loin d’ici ?', 2, 2),
+-- Time & Date
+('What time is it?', 'Quelle heure est-il ?', 2, 3),
+('Today is Monday', 'Aujourd’hui, c’est lundi', 2, 3),
+('My birthday is in July', 'Mon anniversaire est en juillet', 4, 3),
+('We are meeting at 3 PM', 'Nous nous retrouvons à quinze heures', 3, 3);
 
-
-INSERT INTO sentences (english, french, shuffled, category_id) VALUES
-('Turn left at the corner', 'Tournez à gauche au coin', 'Tournez coin à gauche au', 2),
-('Go straight ahead', 'Allez tout droit', 'tout droit Allez', 2),
-('How do I get to the station?', 'Comment puis-je aller à la gare ?', 'aller gare ? à Comment puis-je la', 2),
-('Take the second street on the right', 'Prenez la deuxième rue à droite', 'droite Prenez deuxième rue la à', 2),
-('Is it far from here?', 'Est-ce loin d’ici ?', 'loin Est-ce ? d’ici', 2);
-
-
-INSERT INTO sentences (english, french, shuffled, category_id) VALUES
-('What time is it?', 'Quelle heure est-il ?', 'Quelle heure ? est-il', 3),
-('It is ten o"clock', 'Il est dix heures', 'dix heures Il est', 3),
-('Today is Monday', 'Aujourd’hui, c’est lundi', 'c’est Aujourd’hui lundi', 3),
-('My birthday is in July', 'Mon anniversaire est en juillet', 'en Mon est juillet anniversaire', 3),
-('We are meeting at 3 PM', 'Nous nous retrouvons à quinze heures', 'à quinze Nous heures retrouvons nous', 3);
-
-
-
-
-
--- Insert updated vocabulary (English to French)
-
--- Abroad (category_id = 1)
 INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
-    ('airport', 'aéroport', 1),
-    ('hotel', 'hôtel', 1),
-    ('restaurant', 'restaurant', 1),
-    ('passport', 'passeport', 1),
-    ('ticket', 'billet', 1),
-    ('luggage', 'bagages', 1),
-    ('train', 'train', 1),
-    ('map', 'carte', 1);
+('airport', 'aéroport', 1),
+('hotel', 'hôtel', 1),
+('restaurant', 'restaurant', 1),
+('passport', 'passeport', 1),
+('ticket', 'billet', 1),
+('luggage', 'bagages', 1),
+('train', 'train', 1),
+('map', 'carte', 1);
 
--- Directions (category_id = 2)
-INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
-    ('left', 'gauche', 2),
-    ('right', 'droite', 2),
-    ('straight ahead', 'tout droit', 2),
-    ('turn', 'tourner', 2),
-    ('intersection', 'carrefour', 2),
-    ('stop', 'arrêt', 2),
-    ('sign', 'panneau', 2),
-    ('traffic light', 'feu de signalisation', 2);
+INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES
+('left', 'gauche', 2),
+('right', 'droite', 2),
+('straight ahead', 'tout droit', 2),
+('turn', 'tourner', 2),
+('intersection', 'carrefour', 2),
+('stop', 'arrêt', 2),
+('sign', 'panneau', 2),
+('traffic light', 'feu de signalisation', 2);
 
--- Time & Date (category_id = 3)
-INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
-    ('tomorrow', 'demain', 3),
-    ('yesterday', 'hier', 3),
-    ('morning', 'matin', 3),
-    ('afternoon', 'après-midi', 3),
-    ('evening', 'soir', 3),
-    ('night', 'nuit', 3),
-    ('day', 'jour', 3),
-    ('week', 'semaine', 3),
-    ('month', 'mois', 3),
-    ('year', 'année', 3),
-    ('hour', 'heure', 3),
-    ('minute', 'minute', 3),
-    ('second', 'seconde', 3),
-    ('now', 'maintenant', 3);
+INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES
+('today', 'aujourd’hui', 3),
+('tomorrow', 'demain', 3),
+('yesterday', 'hier', 3),
+('morning', 'matin', 3),
+('afternoon', 'après-midi', 3),
+('evening', 'soir', 3),
+('night', 'nuit', 3),
+('day', 'jour', 3),
+('week', 'semaine', 3),
+('month', 'mois', 3),
+('year', 'année', 3),
+('hour', 'heure', 3),
+('minute', 'minute', 3),
+('second', 'seconde', 3),
+('now', 'maintenant', 3);
 
--- Create a sample staff user
+-- Create a sample staff user& student user
 INSERT INTO users (first_name, last_name, username, email, password, role) VALUES 
-    ('Admin', 'User', 'admin', 'admin@syntaxschoolers.com', 'admintest', 'staff');
-
--- Create a sample student user
-INSERT INTO users (first_name, last_name, username, email, password, role) VALUES 
-    ('John', 'Doe', 'student', 'student@syntaxschoolers.com', 'studenttest', 'Student');
+('Admin', 'User', 'admin', 'admin@syntaxschoolers.com', 'admintest', 'staff'),
+('John', 'Doe', 'student', 'student@syntaxschoolers.com', 'studenttest', 'Student');
