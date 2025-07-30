@@ -5,8 +5,6 @@ const app = require('./app');
 const pages = [
   { route: '/', file: '../frontend/homepage/homepage.html' },
   { route: '/level1', file: '../frontend/level1/level1.html' },
-  { route: '/level2', file: '../frontend/level2.html' },
-  { route: '/staff-dashboard', file: '../frontend/staff_dashboard/staff_dashboard.html' }
 ];
 
 pages.forEach(page => {
