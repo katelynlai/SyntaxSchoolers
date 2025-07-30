@@ -19,13 +19,17 @@ class StaffVocab {
     // READ: Get all sentences 
     static async getAllSentences(categoryId = null) {
         try {
-            let query = `SELECT * FROM sentences`;
+            let query = `
+                SELECT s.*, c.category_name
+                FROM sentences s
+                JOIN category c ON s.category_id = c.category_id
+            `;
             let params = [];
             if (categoryId) {
-                query += ` WHERE category_id = $1`;
+                query += ` WHERE s.category_id = $1`;
                 params.push(categoryId);
             }
-            query += ` ORDER BY sentence_id DESC`;
+            query += ` ORDER BY s.sentence_id DESC`;
             const result = await db.query(query, params);
             return result.rows;
         } catch (error) {
