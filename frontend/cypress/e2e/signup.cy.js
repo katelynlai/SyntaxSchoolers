@@ -14,7 +14,7 @@ describe('Register Form', () => {
 
   it('prevents form submission with empty fields', () => {
     cy.get('form').submit();
-    cy.url().should('include', '/signupPage/signup'); // still on the page
+    cy.url().should('include', '/signupPage/signup.html'); // still on the page
   });
 
   it('submits form when all fields are valid', () => {

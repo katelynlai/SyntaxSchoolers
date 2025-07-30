@@ -1,32 +1,33 @@
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const form = new FormData(e.target);
+    const username = document.getElementById("username-input").value;
+    const password = document.getElementById("password-input").value;
 
-    const options = {
+     try {
+        const response = await fetch("http://localhost:3000/users/login", {
         method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            username: form.get("username"),
-            password: form.get("password")
-        })
-    }
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+    });
 
-    console.log("Request Payload:", options);
-    console.log("Sending:", form.get("username"), form.get("password"));
+        const res = await response.json();
 
+        if (response.ok) {
+            localStorage.setItem("token", res.token);
+            localStorage.setItem("role", res.role);
 
-    const response = await fetch("http://localhost:3000/users/login", options);
-    const data = await response.json();
-    console.log(data)
-
-    if (response.status == 200) {
-        localStorage.setItem("token", data.token);
-        window.location.assign("../landing_page.html");
-      } else {
-        alert(data.error);
+        // Redirect based on role
+        if (res.role === "Student") {
+            window.location.href = "/dashboardPages/user_dashboard.html";
+        } else {
+            window.location.href = "/dashboardPages/teacher_dashboard.html";
       }
-})
+        } else {
+            alert("Login failed: " + res.error || "Unknown error");
+    }
+  } catch (err) {
+            console.error("Login error", err);
+            alert("Something went wrong.");
+  }
+});
