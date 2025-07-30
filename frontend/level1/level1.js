@@ -1,8 +1,6 @@
 // Simple frontend state
 let gameState = {
     questions: [],
-    currentRound: 0,
-    score: 0,
     answers: []
 };
 
@@ -106,7 +104,6 @@ async function startGame() {
             englishCard.style.pointerEvents = 'none';
             frenchCard.style.pointerEvents = 'none';
             
-            gameState.score += 10;
             gameState.answers.push({
                 englishId: selectedEnglish,
                 frenchId: selectedFrench
@@ -116,9 +113,10 @@ async function startGame() {
             
             // Check if all done
             if (gameState.answers.length === gameState.questions.length) {
-                setTimeout(() => {
-                    document.getElementById('submitBtn').style.display = 'inline-block';
-                    showMessage('All matches complete! Submit your answers.', 'success');
+                setTimeout(async () => {
+                    document.getElementById('submitBtn').style.display = 'none';
+                    document.getElementById('nextBtn').style.display = 'inline-block';
+                    await submitLevel(); // This will show the score message
                 }, 1000);
             }
         } else {
@@ -152,7 +150,7 @@ async function startGame() {
             const data = await response.json();
             
             if (data.success) {
-                showMessage(`Level 1 Complete! Score: ${data.data.percentage}%`, 'success');
+                showMessage(`Level 1 Complete! ${data.data.percentage}% correct`, 'success');
                 document.getElementById('submitBtn').style.display = 'none';
                 document.getElementById('nextBtn').style.display = 'inline-block';
             }
@@ -162,7 +160,6 @@ async function startGame() {
     }
 
     function updateUI() {
-        document.getElementById('score').textContent = gameState.score;
         document.getElementById('currentProgress').textContent = gameState.answers.length;
         document.getElementById('totalQuestions').textContent = gameState.questions.length;
         
@@ -177,18 +174,19 @@ async function startGame() {
         messageText.textContent = text;
         messageArea.classList.remove('hidden');
         
-        // Show score messages longer (5 seconds), regular messages shorter (2 seconds)
-        const duration = text.includes('Score:') || text.includes('Complete') ? 5000 : 2000;
+        // Show all messages for 8 seconds
+        const duration = 8000;
         
         setTimeout(() => {
             messageArea.classList.add('hidden');
         }, duration);
     }
 
-    function nextLevel() {
-        // Navigate to Level 2 (or next available level)
+    async function nextLevel() {
+        // Submit the level before navigating
+        await submitLevel();
         window.location.href = '/level2';
     }
 
     // Auto-start when page loads
-    // window.addEventListener('load', startGame);
+    window.addEventListener('load', startGame);
