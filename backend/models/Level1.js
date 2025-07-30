@@ -88,7 +88,7 @@ class Level {
             const questionsAnswered = totalQuestions;
             const questionsCorrect = correctAnswers;
             const isComplete = questionsAnswered >= totalQuestions;
-            
+
             const query = `
                 UPDATE levelprogress 
                 SET questions_answered = $3, 
@@ -98,7 +98,7 @@ class Level {
                 WHERE user_id = $1 AND level_id = $2
                 RETURNING *
             `;
-            
+
             const result = await db.query(query, [
                 userId, 
                 1, 
@@ -107,17 +107,14 @@ class Level {
                 totalQuestions,
                 isComplete
             ]);
-            
+
             if (result.rows.length === 0) {
                 throw new Error('Level 1 progress not found for user');
             }
-            
+
             const progress = result.rows[0];
-            const percentage = Math.round((questionsCorrect / totalQuestions) * 100);
-            
             return {
                 ...progress,
-                percentage: percentage,
                 message: isComplete ? 'Level 1 completed!' : 'Progress saved'
             };
         } catch (error) {

@@ -5,16 +5,14 @@ class SimpleLevelController {
     static async startLevel1(req, res) {
         try {
             const userId = req.user.id;
-            
-            // Just get questions and return them
-            const questions = await Level.getLevel1Questions();
-            
+            // Ensure progress row exists and get questions
+            const result = await Level.startLevel1(userId);
             res.status(200).json({
                 success: true,
                 message: 'Level 1 started',
                 data: {
-                    questions: questions,
-                    totalQuestions: questions.length
+                    questions: result.questions,
+                    totalQuestions: result.questions.length
                 }
             });
         } catch (error) {
