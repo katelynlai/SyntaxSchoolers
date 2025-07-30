@@ -20,32 +20,35 @@ async function getRandomSentence(req, res) {
 
 async function submitSentence(req, res) {
     try {
-      const { sentenceId, sentence } = req.body; // sentence is an array of words
+      const { sentenceId, sentence, userId, levelId } = req.body; // sentence is an array of words
   
       if (!sentenceId || !Array.isArray(sentence)) {
         return res.status(400).json({ error: 'Invalid request body' });
       }
   
-      // Fetch the correct sentence from DB
+      // Fetch the correct sentence from DB (model function)
       const correctSentence = await Level3.getSentenceById(sentenceId);
       if (!correctSentence) {
         return res.status(404).json({ error: 'Sentence not found' });
       }
   
       // Compare user submitted sentence to correct answer (French)
-      // correctSentence.french is a string, split it into words
       const correctWords = correctSentence.french.trim().split(/\s+/);
-  
-      // Check if arrays match (exact order)
       const isCorrect = sentence.length === correctWords.length &&
                         sentence.every((word, i) => word === correctWords[i]);
   
-      res.json({ correct: isCorrect });
+      // Update or create level progress, return updated status (model function)
+      const levelStatus = await Level3.updateLevelProgress(userId, levelId, isCorrect);
+  
+      // Respond with correctness and updated level status
+      res.json({ correct: isCorrect, levelStatus });
+  
     } catch (error) {
       console.error('Error in submitSentence:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
   }
+  
 
 module.exports = {
   getRandomSentence,

@@ -79,6 +79,8 @@
         const dropZone = document.getElementById('drop-zone');
         const selectedWords = Array.from(dropZone.children).map(el => el.textContent.trim());
         const sentenceId = dropZone.dataset.sentenceId;
+        const userId = 1;
+        const levelId = 3
 
         console.log("sentenceId:", sentenceId);
         console.log("Submitted sentence:", selectedWords);
@@ -90,7 +92,9 @@
           },
           body: JSON.stringify({ 
             sentenceId,
-            sentence: selectedWords 
+            sentence: selectedWords, 
+            userId,
+            levelId
         })
         })
         .then(res => res.json())
