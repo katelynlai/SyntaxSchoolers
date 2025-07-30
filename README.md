@@ -8,7 +8,7 @@ The aim of the app is to provide fun and engaging way of learning a non-STEM sub
 
 ## Stakeholder & Solutions Analysis
 
-Here are some examples of stakeholder stories.
+Here are some examples of stakeholder stories from those who would have an interest in the app.
 - [ ] As a student, I want a fun, simple language learning app, so that learning a language can be an engaging, repeatable, and memory-friendly experience, without being bombarded with overwhelming amounts of content and textbooks. 
 - [ ] As a teacher, I want a simple language learning app for my students to use, so that they can retain key phrases through repetition with increasing challenges, while not getting bored or feeling like learning a foreign language is a chore. This app should provide a respite from facing lots of focus on STEM subjects, to the detriment of a greater knowledge of subjects such as languages and geography.
 - [ ] As a product owner, I want to manage the production lifecycle of a simple, fun language learning app for teenagers, so that an alternative is available when compared to other apps that contain an overwhelming amount of content and visuals. I want to ensure that the production lifecycle is delivered on time, and that it receives positive feedback in the Beta phase.
