@@ -1,4 +1,4 @@
-const db = require('./backend/controllers/database/connect');
+const db = require('../database/connect');
 
 class Level2 {
     static async getLevel2Question(categoryId = 1) {
