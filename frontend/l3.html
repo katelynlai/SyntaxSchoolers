@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>French Sentence Builder</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    .word-bank, .drop-zone {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      border: 2px dashed #ccc;
+      padding: 10px;
+      min-height: 50px;
+    }
+    .draggable-word {
+      padding: 8px 12px;
+      background: #f0f0f0;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      cursor: grab;
+    }
+    #feedback {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function dragstartHandler(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function dragoverHandler(ev) {
+      ev.preventDefault();
+    }
+
+    function dropHandler(ev) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData("text");
+      const draggedElement = document.getElementById(data);
+
+      // Only allow drop if it's not already inside the drop zone
+      if (!ev.target.contains(draggedElement)) {
+        ev.target.appendChild(draggedElement);
+      }
+    }
+
+    function checkAnswer() {
+      const dropZone = document.getElementById("dropZone");
+      const words = Array.from(dropZone.children).map(el => el.textContent.trim());
+      const correct = ["Je", "vais", "au", "le", "marché"];
+
+      const feedback = document.getElementById("feedback");
+      if (JSON.stringify(words) === JSON.stringify(correct)) {
+        feedback.textContent = "✅ Correct!";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "❌ Try again.";
+        feedback.style.color = "red";
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <h2>Arrange the French sentence</h2>
+  <p><strong>English:</strong> I am going to the market</p>
+
+  <!-- Drop zone for building the sentence -->
+  <div id="dropZone" class="drop-zone" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+    <!-- Drop words here -->
+  </div>
+
+  <!-- Shuffled word bank -->
+  <div class="word-bank">
+    <div id="word1" class="draggable-word" draggable="true" ondragstart="dragstartHandler(event)">au</div>
+    <div id="word2" class="draggable-word" draggable="true" ondragstart="dragstartHandler(event)">vais</div>
+    <div id="word3" class="draggable-word" draggable="true" ondragstart="dragstartHandler(event)">Je</div>
+    <div id="word4" class="draggable-word" draggable="true" ondragstart="dragstartHandler(event)">marché</div>
+    <div id="word5" class="draggable-word" draggable="true" ondragstart="dragstartHandler(event)">le</div>
+  </div>
+
+  <button style="margin-top:20px;" onclick="checkAnswer()">Submit</button>
+  <div id="feedback"></div>
+
+</body>
+</html>

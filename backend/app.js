@@ -7,6 +7,10 @@ const path = require('path');
 // Import Level 1 routes
 const levelRoutes = require('./routers/level1Routes');
 
+// Import Level 3 routes
+const level3Router = require('./routers/level3Routes');
+
+
 const app = express();
 
 // Middleware
@@ -51,6 +55,11 @@ app.get('/level1', (req, res) => {
 app.get('/level2', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/level2.html'));
 });
+
+// Level 3 routes
+app.use('/app', level3Router);
+
+
 
 // 404 handler for API routes
 app.use('/api/*', (req, res) => {

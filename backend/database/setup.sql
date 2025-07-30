@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS vocab;
+DROP TABLE IF EXISTS sentences;
+DROP TABLE IF EXISTS levelprogress;
+DROP TABLE IF EXISTS overallprogress;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS category;
+
 -- Users table
 CREATE TABLE users (
     user_id INT GENERATED ALWAYS AS IDENTITY,
@@ -46,11 +53,50 @@ CREATE TABLE overallprogress (
     PRIMARY KEY (overall_progress_id)
 );
 
+
+--LEVEL 3
+CREATE TABLE sentences (
+  sentence_id INT GENERATED ALWAYS AS IDENTITY,
+  english VARCHAR(100) NOT NULL,
+  french VARCHAR(100) NOT NULL,
+  shuffled VARCHAR(100) NOT NULL,
+  category_id INTEGER NOT NULL REFERENCES category(category_id),
+  PRIMARY KEY (sentence_id)
+);
+
+
 -- Insert updated categories
 INSERT INTO category (category_name) VALUES 
     ('Abroad'),
     ('Directions'),
     ('Time & Date');
+
+INSERT INTO sentences (english, french, shuffled, category_id) VALUES
+('Where is the hotel?', 'Où est l’hôtel ?', 'est Où hôtel l’ ?', 1),
+('I need a passport', 'J’ai besoin d’un passeport', 'besoin J’ai d’un passeport', 1),
+('Do you speak English?', 'Parlez-vous anglais ?', 'anglais ? Parlez-vous', 1),
+('I lost my luggage', 'J’ai perdu mes bagages', 'mes J’ai perdu bagages', 1),
+('Can you help me?', 'Pouvez-vous m’aider ?', 'm’aider Pouvez-vous ?', 1);
+
+
+INSERT INTO sentences (english, french, shuffled, category_id) VALUES
+('Turn left at the corner', 'Tournez à gauche au coin', 'Tournez coin à gauche au', 2),
+('Go straight ahead', 'Allez tout droit', 'tout droit Allez', 2),
+('How do I get to the station?', 'Comment puis-je aller à la gare ?', 'aller gare ? à Comment puis-je la', 2),
+('Take the second street on the right', 'Prenez la deuxième rue à droite', 'droite Prenez deuxième rue la à', 2),
+('Is it far from here?', 'Est-ce loin d’ici ?', 'loin Est-ce ? d’ici', 2);
+
+
+INSERT INTO sentences (english, french, shuffled, category_id) VALUES
+('What time is it?', 'Quelle heure est-il ?', 'Quelle heure ? est-il', 3),
+('It is ten o"clock', 'Il est dix heures', 'dix heures Il est', 3),
+('Today is Monday', 'Aujourd’hui, c’est lundi', 'c’est Aujourd’hui lundi', 3),
+('My birthday is in July', 'Mon anniversaire est en juillet', 'en Mon est juillet anniversaire', 3),
+('We are meeting at 3 PM', 'Nous nous retrouvons à quinze heures', 'à quinze Nous heures retrouvons nous', 3);
+
+
+
+
 
 -- Insert updated vocabulary (English to French)
 
@@ -78,7 +124,6 @@ INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES
 
 -- Time & Date (category_id = 3)
 INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
-    ('today', 'aujourd\'hui', 3),
     ('tomorrow', 'demain', 3),
     ('yesterday', 'hier', 3),
     ('morning', 'matin', 3),

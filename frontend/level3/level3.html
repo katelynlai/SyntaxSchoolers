@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Level 3</title>
+  <link rel="stylesheet" href="level3.css" />
+  <script src="../assests/level3.js" defer></script>
+</head>
+<body>
+  <nav>
+    <div class="logo">VivaLingo</div>
+    <ul class="nav-links">
+      <li><a href="../frontend/homepage/homepage.html">Go Home</a></li>
+      <li><a href="../frontend/loginPage/login.html">Log Out</a></li>
+    </ul>
+    <button class="close-btn">
+      <a href="../homepage/homepage.html">X</a>
+    </button>
+  </nav>
+  <div class="container">
+    <div class="header">
+      <h1>Level 3</h1>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <span class="progress-text" id="progress-text">0%</span>
+    </div>
+    <h3 class="instruction">Put the sentence in correct order!</h3>
+
+    <div class="bubble-row">
+      <div class="speech-bubble left" id="sentence-reference">
+        <!-- Filled dynamically -->
+      </div>
+      <div class="speech-bubble right lifted">
+        <div class="drop-zone" id="drop-zone" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+          <!-- Words will be dropped here -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="options" id="options">
+      <!-- Buttons added dynamically -->
+    </div>
+
+    <div class="navigation-buttons">
+      <button id="Submit">Submit</button>
+    </div>
+
+    <div id="feedback" style="margin-top: 10px; font-weight: bold;"></div>
+
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="bubble-row">
+      <div class="speech-bubble left" id="sentence-reference">Hi my name is</div>
+      <div class="speech-bubble right lifted">
+        <div class="drop-zone" id="drop-zone" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+      </div>
+    </div>
+
+    <div class="options" id="options">
+      <button id="word1" class="option" draggable="true" ondragstart="dragstartHandler(event)">is</button>
+      <button id="word2" class="option" draggable="true" ondragstart="dragstartHandler(event)">my</button>
+      <button id="word3" class="option" draggable="true" ondragstart="dragstartHandler(event)">Hi</button>
+      <button id="word4" class="option" draggable="true" ondragstart="dragstartHandler(event)">name</button>
+    </div>
+     -->
