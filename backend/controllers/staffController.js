@@ -1,3 +1,63 @@
+// SENTENCES CRUD
+const createSentence = async (req, res) => {
+    try {
+        const { english, french, shuffled, categoryId } = req.body;
+        if (!english || !french || !shuffled || !categoryId) {
+            return res.status(400).json({ success: false, message: 'english, french, shuffled, and categoryId are required' });
+        }
+        const newSentence = await StaffVocab.createSentence(english, french, shuffled, categoryId);
+        res.status(201).json({ success: true, message: 'Sentence created successfully', data: newSentence });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+const getAllSentences = async (req, res) => {
+    try {
+        const categoryId = req.query.categoryId || null;
+        const sentences = await StaffVocab.getAllSentences(categoryId);
+        res.json({ success: true, data: sentences });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+const getSentenceById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const sentence = await StaffVocab.getSentenceById(id);
+        if (!sentence) {
+            return res.status(404).json({ success: false, message: 'Sentence not found' });
+        }
+        res.json({ success: true, data: sentence });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+const updateSentence = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { english, french, shuffled, categoryId } = req.body;
+        if (!english || !french || !shuffled || !categoryId) {
+            return res.status(400).json({ success: false, message: 'english, french, shuffled, and categoryId are required' });
+        }
+        const updatedSentence = await StaffVocab.updateSentence(id, english, french, shuffled, categoryId);
+        res.json({ success: true, message: 'Sentence updated successfully', data: updatedSentence });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+const deleteSentence = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedSentence = await StaffVocab.deleteSentence(id);
+        res.json({ success: true, message: 'Sentence deleted successfully', data: deletedSentence });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
 const StaffVocab = require('../models/StaffVocab');
 
 // CREATE: Add new vocabulary word
@@ -252,5 +312,9 @@ module.exports = {
     getVocabWordById, updateVocabWord,
     deleteVocabWord, getAllCategories,
     createCategory, updateCategory,
-    deleteCategory, searchVocabWords
+    deleteCategory, searchVocabWords,
+    // Sentences CRUD
+    createSentence, getAllSentences,
+    getSentenceById, updateSentence,
+    deleteSentence
 };
