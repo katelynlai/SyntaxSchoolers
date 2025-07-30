@@ -3,7 +3,7 @@ describe('Register Form', () => {
     cy.visit('http://localhost:3000/signupPage/signup.html');
   });
 
-  it('renders all required input fields', () => {
+  it('renders all input fields', () => {
     cy.get('#firstname-input').should('exist');
     cy.get('#surname-input').should('exist');
     cy.get('#username-input').should('exist');
@@ -13,7 +13,7 @@ describe('Register Form', () => {
   });
 
   it('prevents form submission with empty fields', () => {
-    cy.get('form').submit();
+    cy.get('button[type="submit"]').click();
     cy.url().should('include', '/signupPage/signup.html'); // still on the page
   });
 
