@@ -25,8 +25,8 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
-        window.location.assign("../landing_page.html");
-      } else {
+        window.location.assign("../user_dashboard/user_dashboard.html");
+    } else {
         alert(data.error);
-      }
+    }
 })
