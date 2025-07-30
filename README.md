@@ -22,7 +22,7 @@ A visualisation of the importance of each stakeholder can be viewed in this stak
 
 ## Entity Relationship Diagram (ERD)
 
-The database structured for this app can be visualised as follows:
+The database structured for this app can be visualised as follows. This ERD was created with Mermaid.js.
 
 <img src="frontend/assets/VivaLingo_ERD_screenshot.png">
 

@@ -16,7 +16,8 @@ erDiagram
     users ||--o{ levelProgress: user_id
     users ||--O{ overallProgress: user_id
     category ||--o{ vocab: category_id
-        
+    category ||--o{ sentence: category_id
+     
 
     users {
         user_id integer "PK"
@@ -49,6 +50,13 @@ erDiagram
         overall_progress_id integer "PK"
         user_id integer "FK"
         level_status boolean "'pass' or 'fail'"
+    }
+    sentence {
+      sentence_id integer "PK"
+      english varchar "not null"
+      french varchar "not null"
+      shuffled varchar "not null"
+      category_id integer "FK"
     }
 
   </pre>
