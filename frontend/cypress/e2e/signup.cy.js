@@ -14,25 +14,30 @@ describe('Register Form', () => {
 
   it('prevents form submission with empty fields', () => {
     cy.get('button[type="submit"]').click();
-    cy.url().should('include', '/signupPage/signup.html'); // still on the page
+    cy.url().should('include', '/signupPage/signup.html');
   });
 
-  it('submits form when all fields are valid', () => {
-    cy.get('#firstname-input').type('Joe');
-    cy.get('#surname-input').type('Bloggs');
-    cy.get('#username-input').type('joebloggs');
-    cy.get('#password-input').type('password');
-    cy.get('#repeat-password-input').type('password');
-    cy.get('#role').select('Student');
+  ['Student', 'Staff'].forEach((role) => {
 
-    cy.intercept('POST', '**/users/register', {
-      statusCode: 201,
-      body: {},
+      it(`registers a user with role: ${role}`, () => {
+        cy.get('#firstname-input').type('Joe');
+        cy.get('#surname-input').type('Bloggs');
+        cy.get('#username-input').type('joebloggs');
+        cy.get('#password-input').type('password');
+        cy.get('#repeat-password-input').type('password');
+        cy.get('#role').select(role);
+
+        cy.intercept('POST', '**/users/register', (req) => {
+        expect(req.body.role).to.eq(role); // Confirm role sent (student or teacher)
+        req.reply({ 
+          statusCode: 201,
+          body: {} 
+        });
     }).as('register');
 
     cy.get('form').submit();
-
     cy.wait('@register');
     cy.url().should('match', /\/loginPage\/login/);
+    });
   });
 });
