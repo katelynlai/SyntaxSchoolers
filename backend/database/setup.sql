@@ -1,12 +1,18 @@
+DROP TABLE IF EXISTS vocab;
+DROP TABLE IF EXISTS levelprogress;
+DROP TABLE IF EXISTS overallprogress;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS category;
+
+
 -- Users table
 CREATE TABLE users (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
+    surname VARCHAR(100) NOT NULL,
     username VARCHAR(50) UNIQUE NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role VARCHAR(20) DEFAULT 'Student' CHECK (role IN ('Student', 'staff')),
+    role VARCHAR(20) DEFAULT 'Student' CHECK (role IN ('Student', 'Staff')),
     PRIMARY KEY (user_id)
 );
 
@@ -41,7 +47,7 @@ CREATE TABLE levelprogress (
 -- OverallProgress table
 CREATE TABLE overallprogress (
     overall_progress_id INT GENERATED ALWAYS AS IDENTITY,
-    user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+    user_id INTEGER UNIQUE REFERENCES users(user_id) ON DELETE CASCADE,
     level_status BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY (overall_progress_id)
 );
@@ -78,7 +84,7 @@ INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES
 
 -- Time & Date (category_id = 3)
 INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 
-    ('today', 'aujourd\'hui', 3),
+    ('today', 'aujourd''hui', 3),
     ('tomorrow', 'demain', 3),
     ('yesterday', 'hier', 3),
     ('morning', 'matin', 3),
@@ -95,9 +101,9 @@ INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES
     ('now', 'maintenant', 3);
 
 -- Create a sample staff user
-INSERT INTO users (first_name, last_name, username, email, password, role) VALUES 
-    ('Admin', 'User', 'admin', 'admin@syntaxschoolers.com', 'admintest', 'staff');
+INSERT INTO users (first_name, surname, username, password, role) VALUES 
+    ('Admin', 'User', 'admin', 'admintest', 'Staff');
 
 -- Create a sample student user
-INSERT INTO users (first_name, last_name, username, email, password, role) VALUES 
-    ('John', 'Doe', 'student', 'student@syntaxschoolers.com', 'studenttest', 'Student');
+INSERT INTO users (first_name, surname, username, password, role) VALUES 
+    ('John', 'Doe', 'student', 'studenttest', 'Student');
