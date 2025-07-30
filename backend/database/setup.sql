@@ -55,7 +55,7 @@ CREATE TABLE levelprogress (
 
 CREATE TABLE overallprogress (
     overall_progress_id INT GENERATED ALWAYS AS IDENTITY,
-    user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+    user_id INTEGER UNIQUE REFERENCES users(user_id) ON DELETE CASCADE,
     level_1_complete BOOLEAN DEFAULT FALSE,
     level_2_complete BOOLEAN DEFAULT FALSE,
     level_3_complete BOOLEAN DEFAULT FALSE,
