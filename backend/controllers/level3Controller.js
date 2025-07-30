@@ -1,4 +1,5 @@
 const Level3 = require('../models/Level3'); // adjust filename if different
+const Progress = require('../models/Progress')
 
 async function getRandomSentence(req, res) {
   try {
@@ -39,6 +40,11 @@ async function submitSentence(req, res) {
   
       // Update or create level progress, return updated status (model function)
       const levelStatus = await Level3.updateLevelProgress(userId, levelId, isCorrect);
+
+        // If level is now completed, mark it in overall progress
+      if (levelStatus === true) {
+        await Progress.markLevelComplete(userId, levelId);
+      }
   
       // Respond with correctness and updated level status
       res.json({ correct: isCorrect, levelStatus });

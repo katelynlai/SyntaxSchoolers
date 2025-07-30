@@ -53,14 +53,15 @@ CREATE TABLE levelprogress (
     PRIMARY KEY (level_progress_id)
 );
 
--- OverallProgress table
 CREATE TABLE overallprogress (
     overall_progress_id INT GENERATED ALWAYS AS IDENTITY,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-    level_status BOOLEAN NOT NULL DEFAULT FALSE,
+    level_1_complete BOOLEAN DEFAULT FALSE,
+    level_2_complete BOOLEAN DEFAULT FALSE,
+    level_3_complete BOOLEAN DEFAULT FALSE,
+    all_levels_complete BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (overall_progress_id)
 );
-
 
 --LEVEL 3
 CREATE TABLE sentences (
@@ -85,8 +86,8 @@ INSERT INTO level (level_name) VALUES
     ('Level 3');
 
 INSERT INTO sentences (english, french, shuffled, category_id, level_id) VALUES
-('Where is the hotel?', 'Où est l’hôtel ?', 'est Où hôtel l’ ?', 1, 3),
-('I need a passport', 'J’ai besoin d’un passeport', 'besoin J’ai d’un passeport', 1, 3),
+('Where is the station?', 'Où est la gare ?', 'est Où gare la ?', 1, 3),
+('I need a ticket', 'J’ai besoin d’un billet', 'besoin billet J’ai d’un', 1, 3),
 ('Do you speak English?', 'Parlez-vous anglais ?', 'anglais ? Parlez-vous', 1, 3),
 ('I lost my luggage', 'J’ai perdu mes bagages', 'mes J’ai perdu bagages', 1, 3),
 ('Can you help me?', 'Pouvez-vous m’aider ?', 'm’aider Pouvez-vous ?', 1, 3);
