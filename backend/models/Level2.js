@@ -1,39 +1,40 @@
 const db = require('../database/connect');
 
 class Level2 {
-    static async getLevel2Question(categoryId = 1) {
+    static async getLevel2Question() {
         try {
-            const query = `
-                SELECT v.vocab_id, v.lang1_word, v.lang2_word, c.category_name 
-                FROM vocab v
-                JOIN category c ON v.category_id = c.category_id
-                WHERE v.category_id = $1
-                ORDER BY RANDOM()
-                LIMIT 4
+            const sentenceQuery = `SELECT * FROM sentences ORDER BY RANDOM() LIMIT 1`;
+
+            const { rows } = await db.query(sentenceQuery);
+            const sentence = rows[0];
+
+            const words = sentence.french.split(' ');
+            const missingWord = words[sentence.missing_index];
+            words[sentence.missing_index] = '___'; // Replace the missing word with a placeholder
+
+            const randomWordsQuery = `
+                SELECT lang2_word FROM vocab
+                WHERE lang2_word != $1 
+                ORDER BY RANDOM() 
+                LIMIT 3
             `;
 
-            const result = await db.query(query, [categoryId]);
+            const {rows: randomWords} = await db.query(randomWordsQuery, [missingWord]);
 
-            if (result.rows.length < 4) {
-                throw new Error('Not enough vocab entries in this category.');
-            }
-
-            const correct = result.rows[0]; 
-            const options = result.rows.map(row => row.lang2_word);
-
-            const shuffledOptions = options.sort(() => Math.random() - 0.5);
-
-            const sentence = `Je vais à la ___.`; 
+            const options = [...randomWords.map(row => row.lang2_word), missingWord];
+            const shuffledOptions = options.sort(() => 0.5 - Math.random());
 
             return {
-                sentence: sentence,
-                correctWord: correct.lang2_word,
+                sentenceID: sentence.sentence_id,
+                frenchwithMissing: words.join(' '),
+                english: sentence.english,
+                correctWord: missingWord,
                 options: shuffledOptions,
-                category: correct.category_name
             };
         } catch (error) {
             throw new Error(`Error fetching Level 2 question: ${error.message}`);
         }
+
     }
 }
 
