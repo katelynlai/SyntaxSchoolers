@@ -35,3 +35,10 @@ The database structure for this app can be visualised as follows. This ERD was c
 
 <img src="frontend/assets/VivaLingo_ERD_screenshot.png">
 
+## Project Management
+
+We used Trello to structure our work in terms of tasks completed. 
+
+<img src="frontend/assets/VivaLingo_Trello_screenshot.png">
+
+
