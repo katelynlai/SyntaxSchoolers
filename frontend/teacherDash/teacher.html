@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Teacher Dashboard - SyntaxSchoolers</title>
-    <link rel="stylesheet" href="./staff_dashboard.css" />
+    <link rel="stylesheet" href="./teacher.css" />
 </head>
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="menu-title">Menu:</div>
+        <div class="logo">VivaLingo</div>
+        <p class="quote">"A different language is a different vision of life"</p>
+        <p class="quote">- Federico Fellini</p>
         <div class="nav-item" id="logout-btn">Logout</div>
+
     </div>
 
     <!-- Main Content -->
@@ -18,8 +21,35 @@
         <div class="dashboard-header">
             <h1 class="dashboard-title">Teacher Dashboard</h1>
         </div>
+        <h2 class="dashboard-subtitle">Manage your students learning!</h2>
 
-        <div class="dashboard-grid">
+        <p class="vocabtitle">Vocab List</p>
+        <div class="wordlistcontainer">
+            <div class="dashboard-card" onclick="openModal('current-words')">
+                <div> Level 1 </div>
+            </div>
+            <div class="dashboard-card" onclick="openModal('all-sentences')">
+                <div> Level 2 </div>
+            </div>
+            <div class="dashboard-card" onclick="openModal('all-sentences')">
+                <div> Level 3 </div>
+            </div>
+        </div>
+
+        <p class="edittitle">Edit Vocab</p>
+        <div class="sentencecontainer">
+            <div class="dashboard-card" onclick="openModal('edit-words')">
+                <div> Edit Level 1 </div>
+            </div>
+            <div class="dashboard-card" onclick="openModal('edit-sentences')">
+                <div> Edit Level 2 </div>
+            </div>
+            <div class="dashboard-card" onclick="openModal('edit-sentences')">
+                <div> Edit Level 3 </div>
+            </div>
+
+        <!--<div class="dashboard-grid">
+    
             <div class="dashboard-card" onclick="openModal('current-words')">
                 <div> Level 1 Word List </div>
             </div>
@@ -38,7 +68,7 @@
             <div class="dashboard-card" onclick="openModal('edit-sentences')">
                 <div>Edit Level 3</div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- Modal Overlay -->
