@@ -2,7 +2,7 @@
 
 <img src="frontend/assets/VivaLingo_homepagescreenshot.png">
 
-### As part of Week 5's final full-stack project at La Fosse Academy, we were tasked with designing and developing an educational game to address a real-world challenge faced by schools.
+### As part of Week 5's project, we were tasked with designing and developing an educational game to address a real-world challenge faced by schools.
 
 Our team created VivaLingo: a French language learning app aimed at secondary school students. It was developed in response to a brief from the Hive Foundation, which highlighted a decline in student engagement with non-STEM subjects, particularly languages.
 
