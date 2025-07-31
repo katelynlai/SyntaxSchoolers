@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --accent-color: rgb(59, 59, 141);
+  --accent2-color: #bdbee6;
+  --base-color: white;
+  --background-colour: #f7f7fe;
+  --text-color: rgb(91, 91, 130);
+  --input-colour: white;
+  --input2-color: grey;
+  --correct-color: #4CAF50;
+  --correct-hover: #45a049;
+  --error-color: #f44336;
+}
+
+
+html{
+    font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    font-size: 12pt;
+    color: var(--text-colour);
+    text-align: center;
+}
+
+body{
+    min-height: 100vh;
+    background-image: url(../assests/eiffel-tower.jpg);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+
+.wrapper{
+    box-sizing: border-box;
+    background-color: var(--base-color);
+    height: 100vh;
+    width: max(20%, 600px);
+    padding: 10px;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+form{
+    width: min(400px, 100%);
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+form > div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white
+}
+
+form label{
+    flex-shrink: 0;
+    height: 50px;
+    width: 50px;
+    background-color: var(--accent-color);
+    fill: var(--base-color);
+    color:var(--base-color);
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.role-select {
+  margin-bottom: 20px;
+}
+
+.role-select label {
+    width: 80px;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--base-color); 
+}
+
+.role-select select {
+  width: 110px;
+  margin-bottom: 8px;
+  border: 1px solid var(--accent-color);
+  border-radius: 2px;
+  font-size: 1rem;
+  background-color: var(--base-color); 
+  color: var(--accent-color);
+  transition: border 0.2s ease;
+}
+
+.role-select select:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 4px rgba(59, 59, 141, 0.2);
+}
+
+form input{
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 0;
+    height: 50px;
+    padding: 1em;
+    border-radius: 0 5px 5px 0;
+    border: 2px solid var(--accent-color);
+    border-left: none;
+    background-color: var(--input-colour);
+}
+
+form input:hover{
+    border-color: var(--accent-color);
+}
+
+form input:focus{
+    outline: none;
+    border-color: var(--text-color);
+}
+
+div:has(input:focus) > label{
+    background-color: var(--text-color);
+}
+
+form input::placeholder{
+    color: var(--text-color);
+}
+
+form button{
+    margin-top: 10px;
+    border: none;
+    border-radius: 1000px;
+    padding: .85em 4em;
+    background-color: var(--accent-color);
+    color: var(--base-color);
+    font: inherit;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 150ms ease;
+}
+
+form button:hover{
+    background-color: var(--text-color);
+}
+
+form button:focus{
+    outline:none;
+    background-color: var(--text-color);
+}
+
+a{
+    text-decoration: none;
+    color: var(--accent-color)
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+@media(max-width: 1100px){
+    .wrapper{
+        width: min(600px, 100%)
+    }
+}
+
+form div.incorrect label{
+    background-color: blue;
+}
+
+form div.incorrect input{
+    border-color: blue;
+}
