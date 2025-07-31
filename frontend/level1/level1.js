@@ -138,7 +138,8 @@ async function startGame() {
     }
 
     async function submitLevel() {
-        const userId = 1;
+        const userId = 2;
+        console.log("userId:", userId);
         try {
             const response = await fetch('http://localhost:3000/api/levels/1/submit', {
                 method: 'POST',
@@ -182,7 +183,7 @@ async function startGame() {
         messageArea.classList.remove('hidden');
         
         // Show all messages for 8 seconds
-        const duration = 8000;
+        const duration = 4000;
         
         setTimeout(() => {
             messageArea.classList.add('hidden');

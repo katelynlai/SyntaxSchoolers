@@ -4,7 +4,7 @@ class SimpleLevelController {
     // POST /api/levels/1/start - Start Level 1 (stateless)
     static async startLevel1(req, res) {
         try {
-            const userId = req.user.id;
+            const userId = 2;
             // Ensure progress row exists and get questions
             const result = await Level.startLevel1(userId);
             res.status(200).json({
@@ -28,6 +28,9 @@ class SimpleLevelController {
     static async submitLevel1(req, res) {
         try {
             const { answers, userId } = req.body; // Array of {englishId, frenchId} pairs
+            console.log('recieved userId' , userId)
+            console.log('Received answers:', answers);
+            //console.log('Question sample:', questions[0]);
 
             // Get questions to validate against
             const questions = await Level.getLevel1Questions();
@@ -43,6 +46,7 @@ class SimpleLevelController {
             // Save to database
             const result = await Level.submitLevel1Answers(userId, correctCount, questions.length);
 
+            
             // Update overallprogress: set level_1_complete = true
             const db = require('../database/connect');
             await db.query(`
@@ -50,6 +54,9 @@ class SimpleLevelController {
                 VALUES ($1, true)
                 ON CONFLICT (user_id) DO UPDATE SET level_1_complete = true
             `, [userId]);
+             
+            
+
 
             const percentage = Math.round((correctCount / questions.length) * 100);
 

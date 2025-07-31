@@ -1,10 +1,11 @@
-DROP TABLE IF EXISTS vocab;
-DROP TABLE IF EXISTS sentences;
-DROP TABLE IF EXISTS levelprogress;
-DROP TABLE IF EXISTS overallprogress;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS category;
-DROP TABLE IF EXISTS level;
+DROP TABLE IF EXISTS levelprogress CASCADE;
+DROP TABLE IF EXISTS overallprogress CASCADE;
+DROP TABLE IF EXISTS sentences CASCADE;
+DROP TABLE IF EXISTS vocab CASCADE;
+DROP TABLE IF EXISTS category CASCADE;
+DROP TABLE IF EXISTS level CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+
 
 
 
@@ -77,6 +78,10 @@ CREATE TABLE sentences (
 
 ALTER TABLE levelprogress
 ADD CONSTRAINT unique_user_level UNIQUE (user_id, level_id);
+
+ALTER TABLE overallprogress
+ADD CONSTRAINT unique_user_id UNIQUE (user_id);
+
 
 INSERT INTO category (category_name) VALUES 
     ('Abroad'),
