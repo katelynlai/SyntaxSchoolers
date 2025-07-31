@@ -24,7 +24,7 @@ erDiagram
     users {
         user_id integer "PK"
         first_name varchar(100) "not null"
-        last_name varchar(100) "not null"
+        surname varchar(100) "not null"
         username varchar(50) "unique, not null"
         email varchar(100) "unique, not null"
         password varchar(255) "not null"
@@ -72,7 +72,10 @@ erDiagram
     overallprogress {
         overall_progress_id integer "PK"
         user_id integer "FK"
-        level_status boolean "default false"
+        level_1_complete boolean "default false"
+        level_2_complete boolean "default false"
+        level_3_complete boolean "default false"
+        all_levels_complete boolean "default false"
     }
 
     sentences {
@@ -82,7 +85,6 @@ erDiagram
         shuffled varchar(100) "not null"
         category_id integer "FK"
     }
-
   </pre>
 </body>
 </html>
