@@ -9,6 +9,8 @@ const level1Routes = require('./routers/level1Routes');
 const Level2Routes = require('./routers/Level2Routes')
 const level3Router = require('./routers/level3Routes');
 const userDashRouter = require('./routers/userDashRouter');
+const staffRoutes = require('./routers/staffRoutes');
+
 
 
 // Serve static files from the frontend directory
@@ -32,6 +34,9 @@ app.use('/app', level3Router);
 
 //user_dashboard app route
 app.use('/api/progress', userDashRouter);
+
+// Staff Routes for teachers (CRUD operations)
+app.use('/api/staff', staffRoutes);
 
 
 
