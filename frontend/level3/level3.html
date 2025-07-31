@@ -7,38 +7,38 @@
   <link rel="stylesheet" href="level3.css" />
   <script src="./level3.js" defer></script>
 </head>
+
 <body>
-  <nav>
-    <div class="logo">VivaLingo</div>
-    <ul class="nav-links">
-      <li><a href="../frontend/homepage/homepage.html">Go Home</a></li>
-      <li><a href="../frontend/loginPage/login.html">Log Out</a></li>
-    </ul>
-  </nav>
+    <nav>
+        <div class="logo">VivaLingo</div>
+        <ul class="nav-links">
+            <li><a href="../frontend/homepage/homepage.html">Go Home</a></li>
+            <li><a href="../frontend/loginPage/login.html">Log Out</a></li>
+        </ul>
+    </nav>
 
-  <div class="container">
+    <div class="container">
+        
     <div class="progress-container">
-      <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-      <span class="progress-text" id="progress-text">0%</span>
-    </div>
-    <div class="header">
-      <h1>Level 3</h1>
-    </div>
-
-    <h3 class="instruction">Put the sentence in correct order!</h3>
-
-    <div class="bubble-row">
-      <div class="speech-bubble left" id="sentence-reference">
-        <!-- Filled dynamically -->
-      </div>
-      <div class="speech-bubble right lifted">
-        <div class="drop-zone" id="drop-zone" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
-          <!-- Words will be dropped here -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
         </div>
-      </div>
+        <span class="progress-text" id="progress-text">0%</span>
     </div>
+    
+    <div class="header">
+      <h1>Level 3: Matching Sentences</h1>
+    </div>
+    <p class="instruction">Put the sentence in correct order!</p>
+        
+    <div class="game-container">
+        <div class="bubble-row">
+            <div class="speech-bubble left" id="sentence-reference"></div>
+            <div class="speech-bubble right lifted">
+                <div class="drop-zone" id="drop-zone"></div>
+            </div>
+        </div>
+    </div>  
 
     <div class="options" id="options">
       <!-- Buttons added dynamically -->

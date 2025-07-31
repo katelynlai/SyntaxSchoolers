@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 - SyntaxSchoolers</title>
+    <link rel="stylesheet" href="level1.css">
+    <script src="level1.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">VivaLingo</div>
+        <ul class="nav-links">
+            <li><a href="../frontend/homepage/homepage.html">Go Home</a></li>
+            <li><a href="../frontend/loginPage/login.html">Log Out</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+
+    <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="progress-text" id="progress-text">0%</span>
+    </div>
+
+    <h1>Level 1: Vocabulary Match</h1>
+    <p>Match the words!</p>
+
+    <div class="game-container">
+        <div id="loadingScreen" class="loading">
+            Loading vocabulary questions...
+        </div>
+
+        <div id="gameArea" class="game-area hidden">
+            <div class="word-column" id="englishColumn">
+                <h3 style="text-align: center; margin-bottom: 10px;">English</h3>
+            </div>
+            <div class="word-column" id="frenchColumn">
+                <h3 style="text-align: center; margin-bottom: 10px;">Français</h3>
+            </div>
+        </div>
+
+        <div id="messageArea" class="message hidden">
+            <p id="messageText"></p>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="startGame()" id="startBtn">Start Game</button>
+            <button class="btn primary" onclick="submitLevel()" id="submitBtn" style="display: none;">✅ Submit Level</button>
+            <button class="btn" onclick="nextLevel()" id="nextBtn" style="display: none;">➡️ Next Level</button>
+        </div>
+    </div>
+</body>
+</html>

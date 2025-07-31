@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+    --accent-color: rgb(59, 59, 141);
+    --accent2-color: #bdbee6;
+    --base-color: white;
+    --background-colour: #f7f7fe;
+    --text-color: rgb(91, 91, 130);
+    --input-colour: white;
+    --input2-color: grey;
+  --correct-color: #4CAF50;
+  --correct-hover: #45a049;
+  --error-color: #f44336;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-image: url(../assets/french-flag-background.jpg);
+  background-color: var(--base-color);
+  background-size: cover;
+  background-image: linear-gradient(to right, rgb(121, 121, 196), white, rgb(193, 56, 56));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--accent-color);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 40px;
+  margin: 20px auto;
+  max-width: 1100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 2px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--accent2-color);
+  color: var(--accent-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: var(--base-color);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 30px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.btn {
+  background-color: var(--accent-color);
+  color: var(--input-color);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-buttons {
+  margin: 50px auto 0 50px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 24px;
+  background-color: var(--input2-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: var(--accent-color);
+  height: 100%;
+  width: 0;
+  border-radius: 10px 0 0 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-weight: bold;
+}
+
+.level-info {
+  align-self: flex-end;
+  margin-top: 5px;
+}
+
+.blank {
+  min-width: 150px;
+  height: 28px;
+  background-color: var(--input-color);
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.game-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px 20px;
+  background: var(--base-color);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+  border: 1px solid #eee;
+}
+
+.question-counter {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.game-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.word-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.word-card {
+  background: var(--input-color);
+  color: var(--input2-color);
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  user-select: none;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.word-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.word-card.selected {
+  border-color: var(--accent-color);
+  background: ;
+}
+
+.word-card.correct {
+  border-color: var(--correct-color);
+  background: rgba(76, 175, 80, 0.1);
+  animation: correctMatch 0.5s ease;
+}
+
+.word-card.incorrect {
+  border-color: var(--error-color);
+  background: rgba(244, 67, 54, 0.1);
+  animation: incorrectShake 0.5s ease;
+}
+
+@keyframes correctMatch {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes incorrectShake {
+  0%, 20%, 40%, 60%, 80% { transform: translateX(0); }
+  10%, 30%, 50%, 70% { transform: translateX(-5px); }
+  90% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn {
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 10px;
+}
+
+.btn:hover {
+  background: #0033cc;
+  border-color: #0033cc;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn.primary {
+  background: var(--correct-color);
+  border-color: var(--correct-color);
+}
+
+.btn.primary:hover {
+  background: var(--correct-hover);
+  border-color: var(--correct-hover);
+}
+
+.loading,
+.message {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  border-radius: 15px;
+}
+
+.message {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .game-area {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .level-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .word-card {
+    padding: 10px 12px;
+    font-size: 14px;
+    min-height: 40px;
+  }
+
+  .game-container {
+    margin: 10px auto;
+    padding: 10px;
+  }
+}
