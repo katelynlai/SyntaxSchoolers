@@ -7,7 +7,6 @@ let gameState = {
 async function startGame() {
     // Hide the Start Game button
     document.getElementById('startBtn').style.display = 'none';
-    showMessage('Loading questions...', 'info');
     
     try {
         const response = await fetch('http://localhost:3000/api/levels/1/start', {
@@ -183,7 +182,7 @@ async function startGame() {
         messageArea.classList.remove('hidden');
         
         // Show all messages for 8 seconds
-        const duration = 4000;
+        const duration = 8000;
         
         setTimeout(() => {
             messageArea.classList.add('hidden');
@@ -191,10 +190,10 @@ async function startGame() {
     }
 
     async function nextLevel() {
-        // Submit the level before navigating
         await submitLevel();
-        window.location.href = 'http://127.0.0.1:5501/frontend/level2/level2.html';
+        window.location.href = 'http://127.0.0.1:5501/frontend/transitionPage/transition.html?from=level1';
     }
+      
 
     // Auto-start when page loads
     window.addEventListener('load', startGame);

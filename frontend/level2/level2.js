@@ -223,7 +223,7 @@ function updateProgress(currentRound, maxRounds) {
   
         if (currentRound > maxRounds) {
           setTimeout(() => {
-            window.location.href = '../transitionpage/transition.html';
+            window.location.href = 'http://127.0.0.1:5501/frontend/transitionPage/transition.html?from=level2';
           }, 3000); // delay to let user see feedback
         } else {
           setTimeout(() => {

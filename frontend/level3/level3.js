@@ -121,6 +121,11 @@ document.getElementById('Submit').addEventListener('click', () => {
             setTimeout(() => {
               feedbackEl.textContent = "🎉 You completed all rounds!";
               document.getElementById('Submit').disabled = true;
+          
+              // ✅ Redirect to transition page after short delay
+              setTimeout(() => {
+                window.location.href = 'http://127.0.0.1:5501/frontend/transitionPage/transition.html?from=level3';
+              }, 1500);
             }, 1500);
           }
       
