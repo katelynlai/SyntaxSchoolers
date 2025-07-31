@@ -4,7 +4,7 @@ class SimpleLevelController {
     // POST /api/levels/1/start - Start Level 1 (stateless)
     static async startLevel1(req, res) {
         try {
-            const userId = 2;
+            const userId = 1;
             // Ensure progress row exists and get questions
             const result = await Level.startLevel1(userId);
             res.status(200).json({

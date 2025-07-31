@@ -138,7 +138,7 @@ async function startGame() {
     }
 
     async function submitLevel() {
-        const userId = 2;
+        const userId = 1;
         console.log("userId:", userId);
         try {
             const response = await fetch('http://localhost:3000/api/levels/1/submit', {
