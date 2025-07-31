@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS level;
 
 
+
 -- Users table
 CREATE TABLE users (
     user_id INT GENERATED ALWAYS AS IDENTITY,
@@ -74,6 +75,8 @@ CREATE TABLE sentences (
   PRIMARY KEY (sentence_id)
 );
 
+ALTER TABLE levelprogress
+ADD CONSTRAINT unique_user_level UNIQUE (user_id, level_id);
 
 INSERT INTO category (category_name) VALUES 
     ('Abroad'),

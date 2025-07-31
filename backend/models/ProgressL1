@@ -1,0 +1,58 @@
+
+/*
+
+const db = require('../database/connect');
+
+class ProgressL1 {
+  // Make sure a row exists in overallprogress for this user
+  static async ensureProgressRow(userId) {
+    const { rows } = await db.query(
+      'SELECT * FROM overallprogress WHERE user_id = $1',
+      [userId]
+    );
+
+    if (rows.length === 0) {
+      await db.query(
+        'INSERT INTO overallprogress (user_id) VALUES ($1)',
+        [userId]
+      );
+    }
+  }
+
+  // Mark Level 1 as complete
+  static async markLevel1Complete(userId) {
+    await this.ensureProgressRow(userId);
+
+    await db.query(
+      `UPDATE overallprogress
+       SET level_1_complete = TRUE
+       WHERE user_id = $1`,
+      [userId]
+    );
+
+    // Check if all levels are complete
+    const result = await db.query(
+      `SELECT level_1_complete, level_2_complete, level_3_complete
+       FROM overallprogress
+       WHERE user_id = $1`,
+      [userId]
+    );
+
+    const progress = result.rows[0];
+    const allDone =
+      progress.level_1_complete &&
+      progress.level_2_complete &&
+      progress.level_3_complete;
+
+    if (allDone) {
+      await db.query(
+        `UPDATE overallprogress
+         SET all_levels_complete = TRUE
+         WHERE user_id = $1`,
+        [userId]
+      );
+    }
+  }
+}
+
+module.exports = ProgressL1;

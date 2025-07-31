@@ -27,8 +27,7 @@ class SimpleLevelController {
     // POST /api/levels/1/submit - Submit all answers at once
     static async submitLevel1(req, res) {
         try {
-            const userId = req.user.id;
-            const { answers } = req.body; // Array of {englishId, frenchId} pairs
+            const { answers, userId } = req.body; // Array of {englishId, frenchId} pairs
 
             // Get questions to validate against
             const questions = await Level.getLevel1Questions();

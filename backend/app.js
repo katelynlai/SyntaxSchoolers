@@ -62,13 +62,7 @@ app.get('/level3', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/level3.html'));
 });
 
-// 404 handler for API routes
-app.use('/api/*', (req, res) => {
-    res.status(404).json({ 
-        error: 'API endpoint not found',
-        path: req.originalUrl 
-    });
-});
+
 
 // Error handling middleware
 app.use((error, req, res, next) => {
