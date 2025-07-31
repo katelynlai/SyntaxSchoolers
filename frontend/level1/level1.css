@@ -221,8 +221,7 @@ h1 {
 }
 
 .word-card.selected {
-  border-color: var(--accent-color);
-  background: ;
+  border-color: var(--accent-color)
 }
 
 .word-card.correct {
