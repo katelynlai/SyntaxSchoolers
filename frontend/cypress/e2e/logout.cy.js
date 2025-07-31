@@ -1,6 +1,6 @@
 const dashboards = [
-  { name: 'Student', url: 'http://localhost:3000/dashboardPages/user_dashboard.html' }, // student dashboard
-  { name: 'Staff', url: 'http://localhost:3000/dashboardPages/staff_dashboard.html' } // staff dashboard
+  { name: 'Student', url: 'http://localhost:3000/user_dashboard/user_dashboard.html' }, // student dashboard
+  { name: 'Staff', url: 'http://localhost:3000/staff_dashboard/staff_dashboard.html' } // staff dashboard
 ];    
     
 dashboards.forEach(({ name, url }) => {

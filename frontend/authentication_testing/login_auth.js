@@ -19,9 +19,9 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
         // Redirect based on role
         if (res.role === "Student") {
-            window.location.href = "/dashboardPages/user_dashboard.html";
+            window.location.href = "/user_dashboard/user_dashboard.html";
         } else {
-            window.location.href = "/dashboardPages/staff_dashboard.html";
+            window.location.href = "/staff_dashboard/staff_dashboard.html";
       }
         } else {
             alert("Login failed: " + res.error || "Unknown error");

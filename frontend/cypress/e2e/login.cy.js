@@ -36,7 +36,7 @@ cy.visit('http://localhost:3000/loginPage/login.html');
     });
 
     cy.wait('@login');
-    cy.url().should('include', '/dashboardPages/user_dashboard.html');
+    cy.url().should('include', '/user_dashboard/user_dashboard.html');
 
     cy.window().then((win) => {
       expect(win.localStorage.getItem('token')).to.eq('fake-jwt-token');
@@ -58,7 +58,7 @@ cy.visit('http://localhost:3000/loginPage/login.html');
     });
 
     cy.wait('@login');
-    cy.url().should('include', '/dashboardPages/staff_dashboard.html');
+    cy.url().should('include', '/staff_dashboard/staff_dashboard.html');
 
     cy.window().then((win) => {
       expect(win.localStorage.getItem('token')).to.eq('fake-jwt-token');
