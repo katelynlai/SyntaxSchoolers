@@ -8,15 +8,27 @@
     <script src="level1.js"></script>
 </head>
 <body>
-    <div class="header">
-        <h1>Level 1: Vocabulary Match</h1>
-        <div class="progress-bar" style="width: 100%; margin: 10px 0 0 0;">
-            <div class="progress-fill" id="progressFill"></div>
+    <nav>
+        <div class="logo">VivaLingo</div>
+        <ul class="nav-links">
+            <li><a href="../frontend/homepage/homepage.html">Go Home</a></li>
+            <li><a href="../frontend/loginPage/login.html">Log Out</a></li>
+        </ul>
+        <button class="close-btn">
+            <a href="../homepage/homepage.html">X</a>
+        </button>
+    </nav>
+    <div class="container">
+    
+    <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
         </div>
-        <div class="question-counter" style="margin-top: 10px;">
-            Progress: <span id="currentProgress">0</span> / <span id="totalQuestions">10</span> completed
-        </div>
+        <span class="progress-text" id="progress-text">0%</span>
     </div>
+    
+    <h1>Level 1: Vocabulary Match</h1>
+    <p>Match the words!</p>
 
     <div class="game-container">
         <div id="loadingScreen" class="loading">

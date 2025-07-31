@@ -10,7 +10,7 @@ async function startGame() {
     showMessage('Loading questions...', 'info');
     
     try {
-        const response = await fetch('/api/levels/1/start', {
+        const response = await fetch('http://localhost:3000/api/levels/1/start', {
             method: 'POST'
         });
             const data = await response.json();
@@ -138,12 +138,15 @@ async function startGame() {
     }
 
     async function submitLevel() {
+        const userId = 1;
+        console.log("userId:", userId);
         try {
-            const response = await fetch('/api/levels/1/submit', {
+            const response = await fetch('http://localhost:3000/api/levels/1/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    answers: gameState.answers
+                    answers: gameState.answers,
+                    userId
                 })
             });
             
@@ -160,12 +163,17 @@ async function startGame() {
     }
 
     function updateUI() {
-        document.getElementById('currentProgress').textContent = gameState.answers.length;
-        document.getElementById('totalQuestions').textContent = gameState.questions.length;
-        
-        const progress = (gameState.answers.length / gameState.questions.length) * 100;
-        document.getElementById('progressFill').style.width = progress + '%';
+        const current = gameState.answers.length;
+        const total = gameState.questions.length;
+        const percent = Math.round((current / total) * 100);
+    
+        //document.getElementById('currentProgress').textContent = current;
+        //document.getElementById('totalQuestions').textContent = total;
+    
+        document.getElementById('progress-fill').style.width = percent + '%';
+        document.getElementById('progress-text').textContent = percent + '%';
     }
+    
 
     function showMessage(text, type) {
         const messageArea = document.getElementById('messageArea');
@@ -175,7 +183,7 @@ async function startGame() {
         messageArea.classList.remove('hidden');
         
         // Show all messages for 8 seconds
-        const duration = 8000;
+        const duration = 4000;
         
         setTimeout(() => {
             messageArea.classList.add('hidden');

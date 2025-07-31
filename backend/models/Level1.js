@@ -9,7 +9,7 @@ class Level {
                 FROM vocab v
                 JOIN category c ON v.category_id = c.category_id
                 ORDER BY RANDOM()
-                LIMIT 10
+                LIMIT 2
             `;
             
             const result = await db.query(query);
