@@ -6,10 +6,11 @@ const dashboards = [
 dashboards.forEach(({ name, url }) => {
   describe(`${name} Dashboard Logout`, () => {
 
-    beforeEach(() => { // Suppress uncaught errors
+    beforeEach(() => {
       
       if (name === 'Staff') {
-        Cypress.on('uncaught:exception', () => false);
+        Cypress.on('uncaught:exception', () => false); // Suppress uncaught errors - JavaScript error that happens during code execution 
+      // not handled by try...catch error handling  
       }
 
       cy.visit(url, {
@@ -20,7 +21,6 @@ dashboards.forEach(({ name, url }) => {
     });
 
     it('clears token and redirects to login page on logout', () => {
-      // cy.get('body').should('contain.html', 'logout'); // lightweight check
 
       // Dynamically check for logout button
       cy.get('body').then(($body) => {
@@ -45,7 +45,7 @@ dashboards.forEach(({ name, url }) => {
       });
 
       cy.location('pathname').should('match', /\/loginPage\/login\.html$/); // Regular expression, as Cypress Testing
-      // kept failing in finding the path
+      // kept failing in finding the path; this made it work
 
       cy.window().then((win) => {
         expect(win.localStorage.getItem('token')).to.be.null;
