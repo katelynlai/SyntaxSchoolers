@@ -27,7 +27,6 @@ The Hive Foundation identified that students are increasingly disengaged from no
 
 The goal of our project was to **design a language-learning tool that places student enjoyment at the centre** while also supporting teachers and aligning with national curriculum objectives.
 
-
 ## Core Features
 
 - Gamified French learning experience
@@ -72,6 +71,8 @@ The goal of our project was to **design a language-learning tool that places stu
 - Planning: Used Trello to break down features and track progress 
 
 - Design: Created wireframes and user flow diagrams 
+
+![Solution Diagram](frontend/assets/high-level-solution-diagram.png)
 
 - Development: Applied MVC architecture, implemented authentication, developed API endpoints, connected frontend with backend
 
