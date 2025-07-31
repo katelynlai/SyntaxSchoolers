@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root{
-    --accent-color: blue;
-    --accent2-color: #7579f7;
+    --accent-color: rgb(59, 59, 141);
+    --accent2-color: #bdbee6;
     --base-color: white;
-    --text-color: blue;
+    --background-colour: #f7f7fe;
+    --text-color: rgb(91, 91, 130);
     --input-colour: white;
     --input2-color: grey;
 }
@@ -15,42 +16,64 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--base-color);
     color: var(--accent-color);
-    background-image: url(../assets/french-flag-background.jpg);
+    background-image: linear-gradient(to right, rgb(121, 121, 196), white, rgb(193, 56, 56));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color: var(--base-color);    
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 40px;
+  margin: 20px auto;
+  max-width: 1100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
 }
+
 .nav-links a {
-    text-decoration: none;
-    color: var(--accent-color);
-    font-weight: 500;
-    transition: color 0.3s;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 2px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+  background-color: var(--accent2-color);
+  color: var(--accent-color);
 }
+
 
 .container {
   max-width: 1100px;
@@ -271,4 +294,5 @@ h1 {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    background-color: #7579f7;
+    background-color: var(--accent2-color);
+  }
