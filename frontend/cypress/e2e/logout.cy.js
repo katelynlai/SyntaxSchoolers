@@ -1,10 +1,10 @@
 const dashboards = [
-  { name: 'Student', url: 'http://localhost:3000/user_dashboard/user_dashboard.html' }, // student dashboard
-  { name: 'Staff', url: 'http://localhost:3000/staff_dashboard/staff_dashboard.html' } // staff dashboard
-];    
-    
+  { name: 'Student', url: 'http://localhost:3000/user_dashboard/user_dashboard.html' },
+  { name: 'Staff', url: 'http://localhost:3000/staff_dashboard/staff_dashboard.html' }
+];
+
 dashboards.forEach(({ name, url }) => {
-  describe(`${name} Dashboard Logout`, () => { // will display either student or staff in name
+  describe(`${name} Dashboard Logout`, () => {
     beforeEach(() => {
       cy.visit(url, {
         onBeforeLoad(win) {
@@ -14,13 +14,22 @@ dashboards.forEach(({ name, url }) => {
     });
 
     it('clears token and redirects to login page on logout', () => {
-        cy.get('#logout').click();
-        
-        cy.location('pathname').should('include', '/loginPage/login.html');
+      // Dynamically check for logout button
+      cy.get('body').then(($body) => {
+        if ($body.find('#logout').length > 0) {
+          cy.get('#logout').click();
+        } else if ($body.find('#logout-btn').length > 0) {
+          cy.get('#logout-btn').click();
+        } else {
+          throw new Error('Logout button not found on dashboard');
+        }
+      });
 
-        cy.window().then((win) => {
-            expect(win.localStorage.getItem('token')).to.be.null;
-            });
-        });
+      cy.location('pathname').should('include', '/loginPage/login.html');
+
+      cy.window().then((win) => {
+        expect(win.localStorage.getItem('token')).to.be.null;
+      });
     });
+  });
 });
