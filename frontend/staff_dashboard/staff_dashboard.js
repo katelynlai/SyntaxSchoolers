@@ -145,6 +145,39 @@ function getEditSentencesContent() {
     `;
 }
 
+function displaySentencesTable(sentences) {
+    const container = document.getElementById('sentences-display');
+    container.innerHTML = `
+        <table class="word-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>English</th>
+                    <th>French</th>
+                    <th>Shuffled</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${sentences.map(s => `
+                    <tr>
+                        <td>${s.sentence_id}</td>
+                        <td>${s.english}</td>
+                        <td>${s.french}</td>
+                        <td>${s.shuffled}</td>
+                        <td>${s.category_name}</td>
+                        <td>
+                            <button class="btn action-btn" onclick="openModal('edit-sentences'); setTimeout(() => { document.getElementById('edit-sentence-id').value = ${s.sentence_id}; loadSentenceForEdit(); }, 100)">Edit</button>
+                        </td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+    `;
+}
+    
+
 // API and Data Functions
 async function apiCall(endpoint, options = {}) {
     try {
