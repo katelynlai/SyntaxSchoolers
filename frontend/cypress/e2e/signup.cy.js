@@ -3,7 +3,7 @@ describe('Register Form', () => {
     cy.visit('http://localhost:3000/signupPage/signup.html');
   });
 
-  it('renders all input fields', () => {
+  it('renders all input fields', () => { // checks input fields work
     cy.get('#firstname-input').should('exist');
     cy.get('#surname-input').should('exist');
     cy.get('#username-input').should('exist');
@@ -12,14 +12,14 @@ describe('Register Form', () => {
     cy.get('#role').should('exist');
   });
 
-  it('prevents form submission with empty fields', () => {
+  it('prevents form submission with empty fields', () => { // checks that form can be submitted if fields are empty
     cy.get('button[type="submit"]').click();
     cy.url().should('include', '/signupPage/signup.html');
   });
 
   ['Student', 'Staff'].forEach((role) => {
 
-      it(`registers a user with role: ${role}`, () => {
+      it(`registers a user with role: ${role}`, () => { // role is either student or staff
         cy.get('#firstname-input').type('Joe');
         cy.get('#surname-input').type('Bloggs');
         cy.get('#username-input').type('joebloggs');
@@ -36,8 +36,9 @@ describe('Register Form', () => {
     }).as('register');
 
     cy.get('form').submit();
-    cy.wait('@register');
-    cy.url().should('match', /\/loginPage\/login/);
+    cy.wait('@register'); // Waits for POST /users/register to be intercepted and responded to
+    // Cypress route alias created using cy.intercept()
+    cy.url().should('match', /\/loginPage\/login/); // regular expression used so that Cypress can find loginpage
     });
   });
 });

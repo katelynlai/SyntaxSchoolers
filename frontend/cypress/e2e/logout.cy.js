@@ -13,9 +13,9 @@ dashboards.forEach(({ name, url }) => {
       // not handled by try...catch error handling  
       }
 
-      cy.visit(url, {
-        onBeforeLoad(win) {
-          win.localStorage.setItem('token', 'fake-jwt-token');
+      cy.visit(url, { // tells Cypress to vist URL = either user or staff dashboard
+        onBeforeLoad(win) { // browser's window object sets up local state before app starts running
+          win.localStorage.setItem('token', 'fake-jwt-token'); //simulates a logged-in user with a fake JSON Web Token
         }
       });
     });
@@ -40,15 +40,16 @@ dashboards.forEach(({ name, url }) => {
           }
 
         } else {
-          throw new Error('Logout button not found on dashboard');
+          throw new Error('Logout button not found on dashboard'); // throws error if no logout button exists on dashboards
         }
       });
 
       cy.location('pathname').should('match', /\/loginPage\/login\.html$/); // Regular expression, as Cypress Testing
       // kept failing in finding the path; this made it work
 
-      cy.window().then((win) => {
-        expect(win.localStorage.getItem('token')).to.be.null;
+      cy.window().then((win) => { // reference to current browser window object for page under test
+        expect(win.localStorage.getItem('token')).to.be.null; // Cypress checks that token value is null, i.e. not in localStorage
+        // anymore because of logout
       });
     });
   });
