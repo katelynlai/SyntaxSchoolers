@@ -1,35 +1,27 @@
 const express = require('express');
-const cors = require('cors');
-const db = require('./database/connect');
-const userRouter = require("./routers/user")
-const path = require('path'); 
+const router = express.Router();
+const staffController = require('../controllers/staffController');
 
-//Import Level routes
-const level1Routes = require('./routers/level1Routes');
-const Level2Routes = require('./routers/level2Routes')
-const level3Router = require('./routers/level3Routes');
+// Vocabulary CRUD routes
+router.post('/vocab', staffController.createVocabWord);           
+router.get('/vocab', staffController.getAllVocabWords);           
+router.get('/vocab/search', staffController.searchVocabWords);    
+router.get('/vocab/:id', staffController.getVocabWordById);       
+router.put('/vocab/:id', staffController.updateVocabWord);        
+router.delete('/vocab/:id', staffController.deleteVocabWord);     
 
-
-// Serve static files from the frontend directory
-const app = express();
-
-//Middleware
-app.use(cors());
-app.use(express.json());
-
-
-app.use("/users", userRouter);
-
-//level 1 app route
-app.use("/api/levels", level1Routes);
-
-//level 2 app route
-app.use('/app', Level2Routes)
-
-//level 3 app route
-app.use('/app', level3Router);
+// Category CRUD routes
+router.post('/categories', staffController.createCategory);       
+router.get('/categories', staffController.getAllCategories);      
+router.put('/categories/:id', staffController.updateCategory);    
+router.delete('/categories/:id', staffController.deleteCategory); 
 
 
-app.use(express.static(path.join(__dirname, '../frontend')));
+// Sentences CRUD routes
+router.post('/sentences', staffController.createSentence);           
+router.get('/sentences', staffController.getAllSentences);           
+router.get('/sentences/:id', staffController.getSentenceById);       
+router.put('/sentences/:id', staffController.updateSentence);        
+router.delete('/sentences/:id', staffController.deleteSentence);     
 
-module.exports = app
+module.exports = router;
