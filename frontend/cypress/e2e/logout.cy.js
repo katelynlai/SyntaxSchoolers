@@ -1,10 +1,10 @@
 const dashboards = [
   { name: 'Student', url: 'http://localhost:3000/dashboardPages/user_dashboard.html' }, // student dashboard
-  { name: 'Teacher', url: 'http://localhost:3000/dashboardPages/teacher_dashboard.html' } // teacher dashboard
+  { name: 'Staff', url: 'http://localhost:3000/dashboardPages/staff_dashboard.html' } // staff dashboard
 ];    
     
 dashboards.forEach(({ name, url }) => {
-  describe(`${name} Dashboard Logout`, () => { // will display either student or teacher in name
+  describe(`${name} Dashboard Logout`, () => { // will display either student or staff in name
     beforeEach(() => {
       cy.visit(url, {
         onBeforeLoad(win) {

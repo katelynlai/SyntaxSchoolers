@@ -21,7 +21,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         if (res.role === "Student") {
             window.location.href = "/dashboardPages/user_dashboard.html";
         } else {
-            window.location.href = "/dashboardPages/teacher_dashboard.html";
+            window.location.href = "/dashboardPages/staff_dashboard.html";
       }
         } else {
             alert("Login failed: " + res.error || "Unknown error");

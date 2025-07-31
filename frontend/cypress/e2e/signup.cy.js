@@ -28,7 +28,7 @@ describe('Register Form', () => {
         cy.get('#role').select(role);
 
         cy.intercept('POST', '**/users/register', (req) => {
-        expect(req.body.role).to.eq(role); // Confirm role sent (student or teacher)
+        expect(req.body.role).to.eq(role); // Confirm role sent (student or staff)
         req.reply({ 
           statusCode: 201,
           body: {} 

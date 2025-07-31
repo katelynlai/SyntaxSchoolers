@@ -44,7 +44,7 @@ cy.visit('http://localhost:3000/loginPage/login.html');
     });
   });
 
-  it('redirects to teacher dashboard if role is Staff', () => { // if person is a teacher
+  it('redirects to staff dashboard if role is Staff', () => { // if person is Staff
     cy.intercept('POST', '**/users/login', {
       statusCode: 200,
       body: { token: 'fake-jwt-token', role: 'Staff' }
@@ -58,7 +58,7 @@ cy.visit('http://localhost:3000/loginPage/login.html');
     });
 
     cy.wait('@login');
-    cy.url().should('include', '/dashboardPages/teacher_dashboard.html');
+    cy.url().should('include', '/dashboardPages/staff_dashboard.html');
 
     cy.window().then((win) => {
       expect(win.localStorage.getItem('token')).to.eq('fake-jwt-token');
