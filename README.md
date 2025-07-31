@@ -83,7 +83,7 @@ The goal of our project was to **design a language-learning tool that places stu
 
 - Testing: Wrote Jest and Cypress tests for both frontend and backend to ensure >60% coverage
 
-- Deployment: 
+- Deployment: Deployed using Render for a seamless full-stack hosting solution
 
 ## Stakeholder Analysis
 
