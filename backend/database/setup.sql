@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS levelprogress CASCADE;
 DROP TABLE IF EXISTS overallprogress CASCADE;
 DROP TABLE IF EXISTS sentences CASCADE;
+DROP TABLE IF EXISTS level2_sentences;
 DROP TABLE IF EXISTS vocab CASCADE;
 DROP TABLE IF EXISTS category CASCADE;
 DROP TABLE IF EXISTS level CASCADE;
@@ -40,6 +41,18 @@ CREATE TABLE vocab (
     lang2_word VARCHAR(255) NOT NULL,
     category_id INTEGER REFERENCES category(category_id) ON DELETE CASCADE,
     PRIMARY KEY (vocab_id)
+);
+
+--LEVEL 2
+CREATE TABLE level2_sentences (
+  sentence_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  french_full VARCHAR(200) NOT NULL,         -- Full sentence before removing the word
+  french_with_gap VARCHAR(200) NOT NULL,     -- Sentence with the missing word replaced (e.g., with ___)
+  missing_word VARCHAR(50) NOT NULL,         -- The word that is missing
+  distractors TEXT[] NOT NULL,               -- Array of incorrect options
+  english_translation VARCHAR(200) NOT NULL, -- Full English translation of the sentence
+  category_id INT NOT NULL REFERENCES category(category_id),
+  level_id INTEGER NOT NULL REFERENCES level (level_id)
 );
 
 -- LevelProgress table
@@ -92,6 +105,10 @@ INSERT INTO level (level_name) VALUES
     ('Level 2'),
     ('Level 3');
 
+
+
+--Level 3 insert statements
+
 INSERT INTO sentences (english, french, shuffled, category_id, level_id) VALUES
 ('Where is the station?', 'Où est la gare ?', 'est Où gare la ?', 1, 3),
 ('I need a ticket', 'J’ai besoin d’un billet', 'besoin billet J’ai d’un', 1, 3),
@@ -116,10 +133,24 @@ INSERT INTO sentences (english, french, shuffled, category_id, level_id) VALUES
 ('We are meeting at 3 PM', 'Nous nous retrouvons à quinze heures', 'à quinze Nous heures retrouvons nous', 3, 3);
 
 
+--Level 2 insert statements
+INSERT INTO level2_sentences (french_full, french_with_gap, missing_word, distractors, english_translation, category_id, level_id) VALUES
+('Je cherche un hôtel près d’ici', 'Je cherche un ___ près d’ici', 'hôtel', ARRAY['restaurant', 'train', 'voiture'], 'I am looking for a hotel nearby', 1, 2),
+('Avez-vous un passeport ?', 'Avez-vous un ___ ?', 'passeport', ARRAY['billet', 'sac', 'appareil'], 'Do you have a passport?', 1, 2),
+('J’ai besoin d’un billet pour Paris', 'J’ai besoin d’un ___ pour Paris', 'billet', ARRAY['sac', 'passeport', 'stylo'], 'I need a ticket to Paris', 1, 2);
+
+INSERT INTO level2_sentences (french_full, french_with_gap, missing_word, distractors, english_translation, category_id, level_id) VALUES
+('Tournez à gauche au feu', 'Tournez à ___ au feu', 'gauche', ARRAY['droite', 'haut', 'bas'], 'Turn left at the light', 2, 2),
+('La gare est tout droit', 'La ___ est tout droit', 'gare', ARRAY['plage', 'voiture', 'chambre'], 'The station is straight ahead', 2, 2),
+('Prenez la deuxième rue à droite', 'Prenez la ___ rue à droite', 'deuxième', ARRAY['première', 'dernière', 'grande'], 'Take the second street on the right', 2, 2);
+
+INSERT INTO level2_sentences (french_full, french_with_gap, missing_word, distractors, english_translation, category_id, level_id) VALUES
+('Nous partons demain matin', 'Nous partons ___ matin', 'demain', ARRAY['hier', 'tard', 'vite'], 'We are leaving tomorrow morning', 3, 2),
+('Il est midi', 'Il est ___', 'midi', ARRAY['soir', 'matin', 'semaine'], 'It is noon', 3, 2),
+('Mon rendez-vous est vendredi', 'Mon rendez-vous est ___', 'vendredi', ARRAY['lundi', 'janvier', 'heure'], 'My appointment is on Friday', 3, 2);
 
 
-
--- Insert updated vocabulary (English to French)
+--Level 1 insert statements
 
 -- Abroad (category_id = 1)
 INSERT INTO vocab (lang1_word, lang2_word, category_id) VALUES 

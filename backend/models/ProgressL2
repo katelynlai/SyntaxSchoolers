@@ -1,0 +1,55 @@
+const db = require('../database/connect');
+
+class ProgressL2 {
+  // Create progress row if not exists
+  static async ensureProgressRow(userId) {
+    const { rows } = await db.query(
+      'SELECT * FROM overallprogress WHERE user_id = $1',
+      [userId]
+    );
+
+    if (rows.length === 0) {
+      await db.query(
+        'INSERT INTO overallprogress (user_id) VALUES ($1)',
+        [userId]
+      );
+    }
+  }
+
+  // Mark individual level as complete
+  static async markLevelComplete(userId, levelId) {
+    await this.ensureProgressRow(userId);
+
+    const levelColumn = `level_${levelId}_complete`;
+
+    // Update the column for the completed level
+    await db.query(
+      `UPDATE overallprogress
+       SET ${levelColumn} = TRUE
+       WHERE user_id = $1`,
+      [userId]
+    );
+
+    // Check if all levels are now marked complete
+    const check = await db.query(
+      `SELECT level_1_complete, level_2_complete, level_3_complete
+       FROM overallprogress
+       WHERE user_id = $1`,
+      [userId]
+    );
+
+    const progress = check.rows[0];
+    const allComplete = progress.level_1_complete && progress.level_2_complete && progress.level_3_complete;
+
+    if (allComplete) {
+      await db.query(
+        `UPDATE overallprogress
+         SET all_levels_complete = TRUE
+         WHERE user_id = $1`,
+        [userId]
+      );
+    }
+  }
+}
+
+module.exports = ProgressL2;

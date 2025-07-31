@@ -193,7 +193,7 @@ async function startGame() {
     async function nextLevel() {
         // Submit the level before navigating
         await submitLevel();
-        window.location.href = '/level2';
+        window.location.href = 'http://127.0.0.1:5501/frontend/level2/level2.html';
     }
 
     // Auto-start when page loads
