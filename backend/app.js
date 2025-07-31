@@ -6,7 +6,9 @@ const path = require('path');
 
 // Import Level 1 routes
 const levelRoutes = require('./routers/level1Routes');
-// Import Staff routes
+
+// Import Level 2 routes
+const Level2Routes = require('./routers/Level2Routes')
 
 const app = express();
 
@@ -49,6 +51,19 @@ app.get('/level1', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/level1/level1.html'));
 });
 
+//level 2 app route
+app.use('/app', Level2Routes)
+
+
+// Health check endpoint
+app.get('/app/health', (req, res) => {
+    res.status(200).json({ 
+        status: 'OK', 
+        message: 'SyntaxSchoolers API is running',
+        timestamp: new Date().toISOString()
+    });
+});
+
 
 // 404 handler for API routes
 app.use('/api/*', (req, res) => {
@@ -65,6 +80,11 @@ app.use((error, req, res, next) => {
     res.status(error.status || 500).json({
         error: error.message || 'Internal Server Error'
     });
+});
+
+// Serve frontend pages
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/homepage/homepage.html'));
 });
 
 module.exports = app;
