@@ -44,7 +44,12 @@ The goal of our project was to **design a language-learning tool that places stu
 2. Backend setup
     - Navigate to ```/backend```
     - Install dependencies using ```npm install```
-    - Set up your ```.env``` file with your datbase URL and JWT secrets
+    - Set up your ```.env``` file 
+    ``` PORT=3000
+        DB_URL=<your-link-here>
+        BCRYPT_SALT_ROUNDS=10
+        SECRET_TOKEN=<your secret token>
+     ```
     - Start the server using ```npm run dev```
 
 3. Frontend setup
