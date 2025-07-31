@@ -258,3 +258,16 @@ a:hover{
 .teacher-controls:hover {
     background-color: darkblue !important;
 }
+
+.student-level.completed {
+    border-left: 6px solid #28a745;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.student-level.incomplete {
+    border-left: 6px solid #dc3545;
+    padding-left: 10px;
+    font-weight: bold;
+  }
+
