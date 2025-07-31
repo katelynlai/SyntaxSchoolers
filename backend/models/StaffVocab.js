@@ -1,82 +1,6 @@
 const db = require('../database/connect');
 
 class StaffVocab {
-    // CREATE: Add new sentence
-    static async createSentence(english, french, shuffled, categoryId) {
-        try {
-            const query = `
-                INSERT INTO sentences (english, french, shuffled, category_id)
-                VALUES ($1, $2, $3, $4)
-                RETURNING *
-            `;
-            const result = await db.query(query, [english, french, shuffled, categoryId]);
-            return result.rows[0];
-        } catch (error) {
-            throw new Error(`Error creating sentence: ${error.message}`);
-        }
-    }
-
-    // READ: Get all sentences 
-    static async getAllSentences(categoryId = null) {
-        try {
-            let query = `
-                SELECT s.*, c.category_name
-                FROM sentences s
-                JOIN category c ON s.category_id = c.category_id
-            `;
-            let params = [];
-            if (categoryId) {
-                query += ` WHERE s.category_id = $1`;
-                params.push(categoryId);
-            }
-            query += ` ORDER BY s.sentence_id DESC`;
-            const result = await db.query(query, params);
-            return result.rows;
-        } catch (error) {
-            throw new Error(`Error fetching sentences: ${error.message}`);
-        }
-    }
-
-    // READ: Get sentence by ID
-    static async getSentenceById(sentenceId) {
-        try {
-            const query = `SELECT * FROM sentences WHERE sentence_id = $1`;
-            const result = await db.query(query, [sentenceId]);
-            if (result.rows.length === 0) return null;
-            return result.rows[0];
-        } catch (error) {
-            throw new Error(`Error fetching sentence: ${error.message}`);
-        }
-    }
-
-    // UPDATE: Update sentence
-    static async updateSentence(sentenceId, english, french, shuffled, categoryId) {
-        try {
-            const query = `
-                UPDATE sentences
-                SET english = $2, french = $3, shuffled = $4, category_id = $5
-                WHERE sentence_id = $1
-                RETURNING *
-            `;
-            const result = await db.query(query, [sentenceId, english, french, shuffled, categoryId]);
-            if (result.rows.length === 0) throw new Error('Sentence not found');
-            return result.rows[0];
-        } catch (error) {
-            throw new Error(`Error updating sentence: ${error.message}`);
-        }
-    }
-
-    // DELETE: Remove sentence
-    static async deleteSentence(sentenceId) {
-        try {
-            const query = `DELETE FROM sentences WHERE sentence_id = $1 RETURNING *`;
-            const result = await db.query(query, [sentenceId]);
-            if (result.rows.length === 0) throw new Error('Sentence not found');
-            return result.rows[0];
-        } catch (error) {
-            throw new Error(`Error deleting sentence: ${error.message}`);
-        }
-    }
     // CREATE: Add new vocabulary word
     static async createVocabWord(lang1Word, lang2Word, categoryId) {
         try {
@@ -93,7 +17,7 @@ class StaffVocab {
         }
     }
 
-    // READ: Get all vocabulary words
+    // READ: Get all vocabulary words with pagination
     static async getAllVocabWords(page = 1, limit = 50, categoryFilter = null) {
         try {
             const offset = (page - 1) * limit;
@@ -267,15 +191,58 @@ class StaffVocab {
 
     // DELETE: Remove category 
     static async deleteCategory(categoryId) {
-    try {
-        const deleteQuery = `DELETE FROM category WHERE category_id = $1`;
-        await db.query(deleteQuery, [categoryId]);
-        return { success: true, message: 'Category and all related vocabulary deleted.' };
-    } catch (error) {
-        return { success: false, message: 'Error deleting category: ' + error.message };
+        try {
+            // Check if category has any words
+            const checkQuery = `SELECT COUNT(*) FROM vocab WHERE category_id = $1`;
+            const checkResult = await db.query(checkQuery, [categoryId]);
+            
+            if (parseInt(checkResult.rows[0].count) > 0) {
+                throw new Error('Cannot delete category that contains vocabulary words');
+            }
+            
+            const query = `DELETE FROM category WHERE category_id = $1 RETURNING *`;
+            const result = await db.query(query, [categoryId]);
+            
+            if (result.rows.length === 0) {
+                throw new Error('Category not found');
+            }
+            
+            return result.rows[0];
+        } catch (error) {
+            throw new Error(`Error deleting category: ${error.message}`);
+        }
     }
-}
 
+    // UTILITY: Search vocabulary words
+    static async searchVocabWords(searchTerm, categoryFilter = null) {
+        try {
+            let query = `
+                SELECT 
+                    v.vocab_id,
+                    v.lang1_word,
+                    v.lang2_word,
+                    v.category_id,
+                    c.category_name
+                FROM vocab v
+                JOIN category c ON v.category_id = c.category_id
+                WHERE (v.lang1_word ILIKE $1 OR v.lang2_word ILIKE $1)
+            `;
+            
+            const params = [`%${searchTerm}%`];
+            
+            if (categoryFilter) {
+                query += ` AND v.category_id = $2`;
+                params.push(categoryFilter);
+            }
+            
+            query += ` ORDER BY v.vocab_id DESC`;
+            
+            const result = await db.query(query, params);
+            return result.rows;
+        } catch (error) {
+            throw new Error(`Error searching vocabulary words: ${error.message}`);
+        }
+    }
 }
 
 module.exports = StaffVocab;
