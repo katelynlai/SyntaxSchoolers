@@ -10,6 +10,10 @@ const levelRoutes = require('./routers/level1Routes');
 // Import Level 2 routes
 const Level2Routes = require('./routers/Level2Routes')
 
+// Import Level 3 routes
+const level3Router = require('./routers/level3Routes');
+
+
 const app = express();
 
 // Middleware
@@ -42,17 +46,31 @@ app.use('/api/levels', levelRoutes);
 // Staff Routes for teachers (CRUD operations)
 //app.use('/api/staff', staffRoutes);
 
-// Frontend pages
+app.get('/level1', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/level1/level1.html'));
+});
+
+// Level 1 Routes
+app.use('/api/levels', levelRoutes);
+
+
+// Serve frontend pages
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/homepage.html'));
 });
+
 
 app.get('/level1', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/level1/level1.html'));
 });
 
+
 //level 2 app route
 app.use('/app', Level2Routes)
+
+// Level 3 routes
+app.use('/app', level3Router);
+
 
 
 // Health check endpoint
