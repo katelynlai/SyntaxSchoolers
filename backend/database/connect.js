@@ -10,5 +10,6 @@ const db = new Pool({
 })
 
 console.log("DB connection established.")
+console.log("DB URL from env:", process.env.DB_URL);
 
 module.exports = db;
