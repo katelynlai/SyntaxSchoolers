@@ -1,27 +1,13 @@
 const express = require('express');
-const router = express.Router();
-const staffController = require('../controllers/staffController');
+const cors = require('cors');
+const staffRoutes = require('./routers/staffRoutes.js');
 
-// Vocabulary CRUD routes
-router.post('/vocab', staffController.createVocabWord);           
-router.get('/vocab', staffController.getAllVocabWords);           
-router.get('/vocab/search', staffController.searchVocabWords);    
-router.get('/vocab/:id', staffController.getVocabWordById);       
-router.put('/vocab/:id', staffController.updateVocabWord);        
-router.delete('/vocab/:id', staffController.deleteVocabWord);     
+const app = express();
 
-// Category CRUD routes
-router.post('/categories', staffController.createCategory);       
-router.get('/categories', staffController.getAllCategories);      
-router.put('/categories/:id', staffController.updateCategory);    
-router.delete('/categories/:id', staffController.deleteCategory); 
+app.use(cors());
+app.use(express.json());
 
+// Mount all staff routes at /api/staff
+app.use('/api/staff', staffRoutes);
 
-// Sentences CRUD routes
-router.post('/sentences', staffController.createSentence);           
-router.get('/sentences', staffController.getAllSentences);           
-router.get('/sentences/:id', staffController.getSentenceById);       
-router.put('/sentences/:id', staffController.updateSentence);        
-router.delete('/sentences/:id', staffController.deleteSentence);     
-
-module.exports = router;
+module.exports = app;
