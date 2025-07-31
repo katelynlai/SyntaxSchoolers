@@ -1,4 +1,4 @@
-const API_BASE = '/api/staff';
+const API_BASE = 'http://localhost:3000/api/staff';
 let currentCategories = [];
 
 // Modal Management

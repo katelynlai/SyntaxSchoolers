@@ -3,7 +3,10 @@ require("dotenv").config();
 
 
 const db = new Pool({
-    connectionString: process.env.DB_URL
+    connectionString: process.env.DB_URL,
+    ssl: {
+        rejectUnauthorized: false  // Required by Supabase
+  }
 })
 
 console.log("DB connection established.")
