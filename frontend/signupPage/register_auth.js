@@ -18,25 +18,12 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
         })
     }
 
-    try {
+    const response = await fetch("http://localhost:3000/users/register", options);
+    const data = await response.json();
 
-        const response = await fetch("http://localhost:3000/users/register", options);
-        
-        let data = {};
-
-        try {
-            data = await response.json();
-        } catch (err) {
-            console.warn("No JSON returned");
-        }
-
-        if (response.status == 201) {
-            window.location.assign("../loginPage/login.html");
+    if (response.status == 201) {
+        window.location.assign("../loginPage/login.html");
     } else {
-        alert(data.error || "Registration failed");
+        alert(data.error);
     }
-} catch (err) {
-        console.error("Registration error", err);
-        alert("Something went wrong. Please try again");
-    }
-});
+})
