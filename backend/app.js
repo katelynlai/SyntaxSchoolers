@@ -7,6 +7,8 @@ const path = require('path');
 //Import Level routes
 const level1Routes = require('./routers/level1Routes');
 const Level2Routes = require('./routers/Level2Routes')
+const level3Router = require('./routers/level3Routes');
+
 
 // Serve static files from the frontend directory
 const app = express();
@@ -23,6 +25,10 @@ app.use("/api/levels", level1Routes);
 
 //level 2 app route
 app.use('/app', Level2Routes)
+
+//level 3 app route
+app.use('/app', level3Router);
+
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 

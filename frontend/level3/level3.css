@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --accent-color: blue;
+    --accent2-color: #7579f7;
+    --base-color: white;
+    --text-color: blue;
+    --input-colour: white;
+    --input2-color: grey;
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--base-color);
+    color: var(--accent-color);
+    background-image: url(../assets/french-flag-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: var(--base-color);    
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: var(--base-color);;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.close-btn {
+  background-color: var(--accent-color);
+  color: var(--base-colour);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 24px;
+  background-color: var(--input2-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: var(--accent-color);
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-weight: bold;
+}
+
+.instruction {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+.bubble-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+#sentence-reference {
+    padding-top: 40px;
+    font-size: 30px;
+}
+
+.speech-bubble {
+  background-color: var(--accent2-color);
+  color: var(--input-colour);
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+  width: 45%;
+  min-height: 70px;
+  font-weight: bold;
+}
+
+
+.speech-bubble.left::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 30px;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  border-color: var(--accent2-color) transparent transparent transparent;
+}
+
+.speech-bubble.right::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  right: 30px;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  border-color: var(--accent2-color) transparent transparent transparent;
+}
+
+#drop-zone {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.drop-slot {
+  background-color: var(--accent-color);
+  min-width: 80px;
+  height: 30px;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+.word-btn {
+  background-color: var(--accent-color);
+  color: var(--input-colour);
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-weight: bold;
+  cursor: grab;
+}
+
+.translation-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+/*
+.translation-options button {
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+  */
+
+.options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+
+.option:hover {
+    opacity: 0.7;
+}
+
+.blank {
+  min-width: 120px;
+  height: 28px;
+  background-color: var(--input-colour);
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.navigation-buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.navigation-buttons button {
+  background-color: var(--accent-color);
+  color: var(--input-colour);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-buttons button:hover {
+  background-color: var(--accent-color);
+}
+
+.option {
+    color: var(--base-color);
+    margin: 5px;
+    padding: 8px 12px;
+    background: #3e4352;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: grab;
+    display: inline-block;
+    user-select: none;
+    font-size: 25px;
+  }
+  .drop-zone {
+    min-height: 50px;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    background-color: #7579f7;
