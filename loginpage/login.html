@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>VivaLingo | Login </title>
+        <link rel="stylesheet" href="login.css">
+        <script src="./login_auth.js" defer></script>
+    </head>
+        <meta charset="UTF 8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    <body>
+        <div class="wrapper">
+            <h1>Login</h1>
+            <form id="login-form">
+                <div>
+                    <label for="username-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-480.67q-66 0-109.67-43.66Q326.67-568 326.67-634t43.66-109.67Q414-787.33 480-787.33t109.67 43.66Q633.33-700 633.33-634t-43.66 109.67Q546-480.67 480-480.67Zm-320 254V-260q0-36.67 18.5-64.17T226.67-366q65.33-30.33 127.66-45.5 62.34-15.17 125.67-15.17t125.33 15.5q62 15.5 127.34 45.17 30.33 14.33 48.83 41.83T800-260v33.33q0 27.67-19.5 47.17T733.33-160H226.67q-27.67 0-47.17-19.5T160-226.67Z"/></svg>
+                    </label>
+                    <input required type="text" name="username" id="username-input" placeholder="Username">
+                </div>
+                <div>
+                    <label for="password-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z"/></svg>
+                    </label>
+                    <input required type="password" name="password" id="password-input" placeholder="Password">
+                </div>
+                <div class="role-selector">
+                    <label for="role-select">I am a:</label>
+                    <select name="role" id="role-select" required>
+                        <option value="">Select role</option>
+                        <option value="student">Student</option>
+                        <option value="staff">Staff</option>
+                    </select>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p>Need to signup? <a href="../signupPage/signup.html">Signup</a></p>
+        </div>
+    </body>
+</html>
