@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const continueBtn = document.querySelector('.student-btn-click-start');
-    const levels = document.querySelectorAll('.student-level');
+    const levels = document.querySelectorAll('.level-card');
     const userId = 1; // or retrieve from localStorage/session
 
     // Fetch progress from backend

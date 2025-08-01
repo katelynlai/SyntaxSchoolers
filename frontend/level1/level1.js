@@ -152,7 +152,7 @@ async function startGame() {
             const data = await response.json();
             
             if (data.success) {
-                showMessage(`Level 1 Complete! ${data.data.percentage}% correct`, 'success');
+                showMessage(`You matched all the pairs!`, 'success');
                 document.getElementById('submitBtn').style.display = 'none';
                 document.getElementById('nextBtn').style.display = 'inline-block';
             }

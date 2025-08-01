@@ -1,27 +1,42 @@
-* { 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-    --accent-color: blue;
-    --base-color: white;
-    --text-color: blue;
-    --input-colour: white;
+  --accent-color: rgb(59, 59, 141);
+  --accent2-color: #bdbee6;
+  --base-color: white;
+  --background-colour: #f7f7fe;
+  --text-color: rgb(91, 91, 130);
+  --input-colour: white;
+  --input2-color: grey;
+  --correct-color: #4CAF50;
+  --correct-hover: #45a049;
+  --error-color: #f44336;
 }
 
 body {
-    font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url(../assets/eiffeltower.jpg);
-    background-size: 90vw auto;
-    background-position: 113% center;
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
+  font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: linear-gradient(to right, rgb(121, 121, 196), white, rgb(193, 56, 56));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--accent-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--accent-color);
 }
 
 /* Sidebar */
@@ -34,18 +49,47 @@ body {
     box-shadow: 2px 0 8px rgba(0,0,255,0.07);
 }
 
-.menu-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 40px;
+.quote {
+    padding: 20px;
+    font-size: 25px;
+    word-break: break-word;
+    font-weight: 200px;
+    font-style: italic;
+    margin-bottom: 50px;
     color: var(--text-color);
+    text-align: center;
+}
+
+
+.quote-group {
+    margin-top: 120px;
+    text-align: center;
+    color: #555;
+    font-style: italic;
+  }
+  
+
+.sidebar .logo{ 
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  font-size: 2rem;
+  font-weight: 600;
+  font-display: center;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-item {
-    padding: 15px 20px;
-    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 15px 10px;
+    margin: 200px 20px;
     cursor: pointer;
     border-radius: 8px;
+    margin-bottom: 20px;
     transition: background 0.3s, color 0.3s;
     color: var(--text-color);
 }
@@ -68,7 +112,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: -1in;
+    margin: 0; 
+    min-width: 0;
 }
 
 .dashboard-header {
@@ -79,23 +124,99 @@ body {
 }
 
 .dashboard-title {
-    font-size: 28px;
+    display: flex;
+    font-size: 5rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--accent-color);
     text-align: center;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 0px auto;
 }
 
-.profile-btn {
-    background: var(--accent-color);
-    color: var(--base-color);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.dashboard-subtitle {
+    font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    margin-left: 20px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgb(59, 59, 141);
 }
+
+.edittitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+    color: var(--text-color);
+    margin-bottom: 2px;
+}
+
+.sentencecontainer {
+  max-width: 2000px;
+  margin: 10px auto;
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid rgb(59, 59, 141);
+  background-color: var(--base-color);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1px;
+}
+
+.sentencecontainer .dashboard-card {
+  background-color: var(--accent2-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 20px 30px;
+  text-align: center;
+  width: 220px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.sentencecontainer .dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.vocabtitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+    color: var(--text-color);
+    margin-bottom: 2px;
+}
+
+.wordlistcontainer {
+  max-width: 2000px;
+  margin: 10px auto;
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid rgb(59, 59, 141);
+  background-color: var(--base-color);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3px;
+}
+
+.wordlistcontainer .dashboard-card {
+  background-color: var(--accent2-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 20px 30px;
+  text-align: center;
+  width: 220px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.wordlistcontainer.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
 
 /* Dashboard Cards */
+
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -263,7 +384,7 @@ body {
     color: #721c24; 
 }
 
-/* Word List Table */
+
 .word-table {
     width: 100%;
     border-collapse: collapse;
@@ -292,15 +413,56 @@ body {
 }
 
 @media (max-width: 768px) {
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .dashboard-card.wide {
-        grid-column: span 1;
-    }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .sidebar {
-        width: 200px;
-    }
+  .dashboard-card.wide {
+    grid-column: span 1;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .nav-item {
+    margin: 10px auto;
+  }
+
+  .dashboard-title {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .dashboard-subtitle {
+    font-size: 1.2rem;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .sentencecontainer,
+  .wordlistcontainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .dashboard-card,
+  .sentencecontainer .dashboard-card,
+  .wordlistcontainer .dashboard-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-group label {
+    min-width: 100%;
+  }
 }

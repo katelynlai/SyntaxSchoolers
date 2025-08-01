@@ -7,12 +7,13 @@
 }
 
 :root {
-  --accent-color: blue;
-  --accent2-color: #7579f7;
-  --base-color: white;
-  --text-color: blue;
-  --input-color: white;
-  --input2-color: grey;
+    --accent-color: rgb(59, 59, 141);
+    --accent2-color: #bdbee6;
+    --base-color: white;
+    --background-colour: #f7f7fe;
+    --text-color: rgb(91, 91, 130);
+    --input-colour: white;
+    --input2-color: grey;
   --correct-color: #4CAF50;
   --correct-hover: #45a049;
   --error-color: #f44336;
@@ -24,6 +25,7 @@ html, body {
   background-image: url(../assets/french-flag-background.jpg);
   background-color: var(--base-color);
   background-size: cover;
+  background-image: linear-gradient(to right, rgb(121, 121, 196), white, rgb(193, 56, 56));
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -33,29 +35,52 @@ html, body {
 nav {
   display: flex;
   justify-content: space-between;
-  align-items: left;
-  padding: 20px 50px;
-  background-color: var(--base-color);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 40px;
+  margin: 20px auto;
+  max-width: 1100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 30px;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--accent-color);
+  color: var(--text-color);
   font-weight: 500;
-  transition: color 0.3s;
+  font-size: 0.95rem;
+  padding: 2px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--accent2-color);
+  color: var(--accent-color);
 }
 
 .container {
@@ -79,8 +104,6 @@ h1 {
   font-size: 2.5rem;
 }
 
-.close-btn,
-.navigation-buttons button,
 .btn {
   background-color: var(--accent-color);
   color: var(--input-color);
@@ -198,8 +221,7 @@ h1 {
 }
 
 .word-card.selected {
-  border-color: var(--accent-color);
-  background: ;
+  border-color: var(--accent-color)
 }
 
 .word-card.correct {
@@ -227,6 +249,12 @@ h1 {
   100% { transform: translateX(0); }
 }
 
+.instruction {
+  font-size: 1.2rem;
+  margin-top: 30px;
+  text-align: center;
+}
+
 .controls {
   text-align: center;
   margin-top: 20px;
@@ -237,6 +265,7 @@ h1 {
   padding: 12px 30px;
   font-size: 16px;
   font-weight: 600;
+  color: #fff;
   margin: 0 10px;
 }
 

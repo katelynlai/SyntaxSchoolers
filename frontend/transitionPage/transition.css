@@ -1,53 +1,96 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 :root {
-  --accent-color: blue;
+  --accent-color: rgb(59, 59, 141);
+  --accent2-color: #bdbee6;
   --base-color: white;
-  --text-color: blue;
+  --background-colour: #f7f7fe;
+  --text-color: rgb(91, 91, 130);
+  --input-colour: white;
+  --input2-color: grey;
+  --correct-color: #4CAF50;
+  --correct-hover: #45a049;
+  --error-color: #f44336;
 }
-
-body {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-image: url(../assets/eiffeltower.jpg);
+  background-image: linear-gradient(to right, rgb(121, 121, 196), white, rgb(193, 56, 56));
   background-size: cover;
   background-position: center;
-  color: var(--base-color);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--accent-color);
+}
+
+html{
+    font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    font-size: 12pt;
+    color: var(--text-colour);
+    text-align: center;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
-  background-color: var(--base-color);
+  background-color: #ffffff;
+  padding: 16px 40px;
+  margin: 20px auto;
+  max-width: 1100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 30px;
+  padding: 0;
+  margin: 0;
 }
+
 .nav-links a {
   text-decoration: none;
-  color: var(--accent-color);
-  font-weight: 500;
-  transition: color 0.3s;
-}
-.nav-links a:hover {
   color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 2px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--accent2-color);
+  color: var(--accent-color);
 }
 
 .transition-container {
   text-align: center;
-  margin-top: 150px;
+  margin: 150px auto 0;
+  background-color: white;
+  padding: 50px 20px; /* 50px top and bottom, 20px left and right */
+  width: 80%;        /* container width as 80% of viewport */
+  max-width: 1150px;  /* max width so it doesn’t get too wide */
+  border-radius: 8px; /* optional */
 }
 
 .transition-container h1 {

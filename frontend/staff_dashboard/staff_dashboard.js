@@ -1,4 +1,4 @@
-const API_BASE = '/api/staff';
+const API_BASE = 'http://localhost:3000/api/staff';
 let currentCategories = [];
 
 // Modal Management
@@ -38,11 +38,23 @@ function closeModal() {
     document.getElementById('modalOverlay').style.display = 'none';
 }
 
-function logout() {
-    if (confirm('Are you sure you want to logout?')) {
-        window.location.href = '/login.html';
+document.addEventListener('DOMContentLoaded', () => {
+    const logoutBtn = document.getElementById('logout-btn');
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            // Clear token or user session from localStorage
+            localStorage.removeItem('token');
+
+            // (Optional) Clear other user-related data
+            // localStorage.clear(); // uncomment if you want to clear all localStorage keys
+
+            // Redirect to login page
+            window.location.href = '../loginPage/login.html';
+        });
     }
-}
+});
+
 
 // Modal Content Templates
 function getCurrentWordsContent() {

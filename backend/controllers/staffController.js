@@ -6,7 +6,7 @@ const createSentence = async (req, res) => {
         if (!english || !french || !shuffled || !categoryId) {
             return res.status(400).json({ success: false, message: 'english, french, shuffled, and categoryId are required' });
         }
-        const newSentence = await StaffVocab.createSentence(english, french, shuffled, categoryId);
+        const newSentence = await StaffVocab.createSentence(english, french, shuffled, categoryId, 3);
         res.status(201).json({ success: true, message: 'Sentence created successfully', data: newSentence });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });

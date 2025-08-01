@@ -17,7 +17,7 @@ function getQueryParam(param) {
         window.location.href = '../user_dashboard/user_dashboard.html';
         break;
       default:
-        window.location.href = '../homepage/homepage.html';
+        window.location.href = '../user_dashboard/user_dashboard.html';
     }
   }
   

@@ -2,18 +2,14 @@ const db = require('../database/connect');
 
 class StaffVocab {
     // CREATE: Add new sentence
-    static async createSentence(english, french, shuffled, categoryId) {
-        try {
-            const query = `
-                INSERT INTO sentences (english, french, shuffled, category_id)
-                VALUES ($1, $2, $3, $4)
-                RETURNING *
-            `;
-            const result = await db.query(query, [english, french, shuffled, categoryId]);
-            return result.rows[0];
-        } catch (error) {
-            throw new Error(`Error creating sentence: ${error.message}`);
-        }
+    static async createSentence(english, french, shuffled, categoryId, levelId) {
+        const query = `
+            INSERT INTO sentences (english, french, shuffled, category_id, level_id)
+            VALUES ($1, $2, $3, $4, $5)
+            RETURNING *
+        `;
+        const result = await db.query(query, [english, french, shuffled, categoryId, levelId]);
+        return result.rows[0];
     }
 
     // READ: Get all sentences 

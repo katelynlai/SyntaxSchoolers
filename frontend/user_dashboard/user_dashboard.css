@@ -1,19 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-:root{
-    --accent-color: blue;
-    --base-color: white;
-    --text-color: blue;
-    --input-colour: white;
-}
-*{
-    margin: 0;
-    padding: 0;
+:root {
+  --accent-color: rgb(59, 59, 141);
+  --accent2-color: #bdbee6;
+  --base-color: white;
+  --background-colour: #f7f7fe;
+  --text-color: rgb(91, 91, 130);
+  --input-colour: white;
+  --input2-color: grey;
+  --correct-color: #4CAF50;
+  --correct-hover: #45a049;
+  --error-color: #f44336;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: linear-gradient(to right, rgb(121, 121, 196), white, rgb(193, 56, 56));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--accent-color);
 }
 
 html{
@@ -25,16 +35,66 @@ html{
 
 body{
     min-height: 100vh;
-    background-image: url(../assets/eiffeltower.jpg);
     background-size: cover;
     background-position: right;
     overflow: hidden;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 40px;
+  margin: 20px auto;
+  max-width: 1100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 2px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--accent2-color);
+  color: var(--accent-color);
+}
+
 .wrapper{
     height: 100vh;
     display: flex;
-    flex-direction: column;     /* Stack nav items vertically */
+    flex-direction: column;     
     margin-left: 0;
     box-sizing: border-box;
     background-color: var(--base-color);
@@ -54,9 +114,61 @@ body{
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 10rem;
     font-weight: 900;
     text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: var(--base-color);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 30px;
+}
+.student-levels {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.level-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 20px 30px;
+  text-align: center;
+  width: 220px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.level-card:hover {
+  transform: translateY(-5px);
+}
+
+.student-level-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(59, 59, 141);
+  margin-bottom: 10px;
+}
+
+.student-level-description {
+  font-size: 0.95rem;
+  color: rgb(91, 91, 130);
 }
 
 form{
@@ -161,29 +273,29 @@ a:hover{
 
 .student-dashboard-heading, .teacher-dashboard-heading {
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 900;
     text-transform: uppercase;
-    margin-top: 30px;  
+    margin-top: 15px;  
     margin-left: 20px;
-    color: white;
+    color: var(--accent-color);
 }
 
 .student-name, .teacher-name {
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     margin-left: 20px;
-    font-size: 1rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: white;
+    font-size: 2rem;
+    font-weight: 900;;
+    color: rgb(188, 108, 108);
 }
 
 .student-btn-click-start {
+    font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     display: flex;
     background-color: var(--accent-color);
     border: none;
     border-radius: 8px;
-    padding: 14px 28px;
+    padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
     align-self: center;
@@ -196,8 +308,6 @@ a:hover{
     background-color: darkblue;
 }
 
-/* Student levels */
-
 .dashboard-controls {
     display: flex;
     flex-direction: column;
@@ -209,17 +319,18 @@ a:hover{
 .student-levels {
     width: fit-content;
     max-width: 100%;
-    background-color: rgb(0, 98, 255);
-    border: 2px solid black;
+    background-color: var(--accent2-color);
+    border: none;
+    border-radius: 10px;
     margin: auto 0;
     margin-left: 20px;
-    margin-right: 50px;
-    padding: 80px;
+    margin-right: 80px;
+    padding: 50px;
     align-self: flex-end;
 }
 
 .student-level {
-    color: white;
+    color: var(--text-color);
     text-align: left;
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     font-size: 12pt;
@@ -259,15 +370,32 @@ a:hover{
     background-color: darkblue !important;
 }
 
-.student-level.completed {
+/*
+.level-card.completed {
     border-left: 6px solid #28a745;
     padding-left: 10px;
     font-weight: bold;
 }
 
-.student-level.incomplete {
+.level-card.incomplete {
     border-left: 6px solid #dc3545;
     padding-left: 10px;
     font-weight: bold;
   }
+  */
 
+  .level-card.completed {
+    border: 6px solid #28a745;
+    background-color: #e6f4ea;
+    padding-left: 10px;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.2);
+}
+
+.level-card.incomplete {
+    border: 6px solid #dc3545;
+    background-color: #fbeaea;
+    padding-left: 10px;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.2);
+}

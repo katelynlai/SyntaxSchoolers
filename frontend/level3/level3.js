@@ -119,7 +119,7 @@ document.getElementById('Submit').addEventListener('click', () => {
             }, 1500);               // Delay allows user to see feedback
           } else {
             setTimeout(() => {
-              feedbackEl.textContent = "🎉 You completed all rounds!";
+              feedbackEl.textContent = "You completed all the rounds!";
               document.getElementById('Submit').disabled = true;
           
               // ✅ Redirect to transition page after short delay
