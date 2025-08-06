@@ -51,6 +51,7 @@ The goal of our project was to **design a language-learning tool that places stu
         BCRYPT_SALT_ROUNDS=10
         SECRET_TOKEN=<your secret token>
      ```
+    - Set up your database with ```npm run setup-db```
     - Start the server using ```npm run dev```
     - Visit ```http://localhost:3000``` in your browser
 
@@ -58,6 +59,27 @@ The goal of our project was to **design a language-learning tool that places stu
     - Sign up or log in
     - Begin at level 1 and work your way up!
     - Track your progress over time
+  
+## Current Bugs
+
+#### Restarting progress
+
+- On completion of the game, to restart your progress you must go into your database and manually delete all entries in the levelprogress and overallprogress tables. 
+
+    To fix this:
+    
+    Go through all HTTP requests and ensure that the userID is being imported from the database. Look out for where userID is hardcoded as 1.
+
+    TIP! Check the frontend js files and the backend controller folder.
+
+#### Authentication 
+
+- Currently the JWT token is not being handed correctly to the user upon log-in. 
+- Additionally each page can be accessed without logging in.
+
+    To fix this: 
+    
+    Check through the "user" MVC pathway to add client side authentication and secure the pages via the frontend JS files
 
 ## Technologies
 
