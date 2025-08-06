@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Level 3</title>
+  <link rel="stylesheet" href="level3.css" />
+  <script src="./level3.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">VivaLingo</div>
+        <ul class="nav-links">
+          <li><a href="../user_dashboard/user_dashboard.html">Dashboard</a></li>
+          <li><a href="../loginPage/login.html">Log Out</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="progress-text" id="progress-text">0%</span>
+    </div>
+    
+    <div class="header">
+      <h1>Level 3: Matching Sentences</h1>
+    </div>
+    <p class="instruction">Put the sentence in correct order!</p>
+        
+    <div class="game-container">
+        <div class="bubble-row">
+            <div class="speech-bubble left" id="sentence-reference"></div>
+            <div class="speech-bubble right lifted">
+              <div class="drop-zone" id="drop-zone" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+            </div>
+        </div>
+    </div>  
+
+    <div class="options" id="options">
+      <!-- Buttons added dynamically -->
+    </div>
+
+    <div class="navigation-buttons">
+        <button class="btn" id="Submit">Submit Answer</button>
+    </div>
+
+
+    <div id="feedback" style="margin: 10px auto; font-weight: bold; width: fit-content;"></div>
+
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

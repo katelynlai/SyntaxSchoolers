@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --accent-color: rgb(59, 59, 141);
+  --accent2-color: #bdbee6;
+  --base-color: white;
+  --background-colour: #f7f7fe;
+  --text-color: rgb(91, 91, 130);
+  --input-colour: white;
+  --input2-color: grey;
+  --correct-color: #4CAF50;
+  --correct-hover: #45a049;
+  --error-color: #f44336;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--base-color);
+  color: var(--accent-color);
+  background-image: linear-gradient(to right, rgb(121, 121, 196), white, rgb(193, 56, 56));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Navigation (updated to match Level 1 vibe) */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 40px;
+  margin: 20px auto;
+  max-width: 1100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--accent2-color);
+  color: var(--accent-color);
+}
+
+
+.container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: var(--base-color);
+}
+.game-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 50px 30px;
+  background: var(--base-color);
+  border-radius: 30px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+  border: 1px solid #eee;
+}
+
+.bubble-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0; /* Removed bottom margin (handled by container) */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Progress Bar */
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 24px;
+  background-color: var(--input2-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: var(--accent-color);
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+.progress-text {
+  font-weight: bold;
+}
+
+/* Instructions */
+.instruction {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Speech Bubbles */
+.bubble-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+#sentence-reference {
+  padding-top: 40px;
+  font-size: 30px;
+}
+
+.speech-bubble {
+  background-color: var(--accent2-color);
+  color: var(--input-colour);
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+  width: 45%;
+  min-height: 70px;
+  font-weight: bold;
+}
+
+.speech-bubble.left::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 30px;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  border-color: var(--accent2-color) transparent transparent transparent;
+}
+
+.speech-bubble.right::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  right: 30px;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  border-color: var(--accent2-color) transparent transparent transparent;
+}
+
+/* Drop Zone */
+#drop-zone {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  min-height: 50px;
+  border: 2px dashed #231b1b;
+  padding: 10px;
+  background-color: var(--accent2-color);
+  border-radius: 10px;
+}
+
+/* Word Options */
+.option {
+  color: var(--base-color);
+  margin: 5px;
+  padding: 8px 12px;
+  background: #3e4352;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: grab;
+  display: inline-block;
+  user-select: none;
+  font-size: 25px;
+  transition: transform 0.2s ease;
+}
+
+.option:hover {
+  opacity: 0.7;
+  transform: scale(1.05);
+}
+
+/* Buttons */
+.navigation-buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: 1px;
+}
+
+.btn {
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 10px;
+  background-color: rgb(59, 59, 141);
+  color: white;
+
+}
+
+.btn:hover {
+  background: #0033cc;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+
+/* Word Button (if used) */
+.word-btn {
+  background-color: var(--accent-color);
+  color: var(--input-colour);
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-weight: bold;
+  cursor: grab;
+}
+
+#sentence-reference {
+  padding-top: 30px;
+  font-size: 24px;
+  color:#3e4352;
+}
+.game-container {
+    margin: 10px auto;
+    padding: 10px;
+}
+
+
+.options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}

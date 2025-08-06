@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --accent-color: rgb(59, 59, 141);
+  --accent2-color: #bdbee6;
+  --base-color: white;
+  --background-colour: #f7f7fe;
+  --text-color: rgb(91, 91, 130);
+  --input-colour: white;
+  --input2-color: grey;
+  --correct-color: #4CAF50;
+  --correct-hover: #45a049;
+  --error-color: #f44336;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: linear-gradient(to right, rgb(121, 121, 196), white, rgb(193, 56, 56));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--accent-color);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 40px;
+  margin: 20px auto;
+  max-width: 1100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 2px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--accent2-color);
+  color: var(--accent-color);
+}
+
+.close-btn {
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: var(--base-color);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 24px;
+  background-color: var(--input2-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: var(--accent-color);
+  height: 100%;
+  width: 0;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-weight: bold;
+}
+
+/* Game container for sentence and options */
+.game-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px 20px;
+  background: var(--base-color);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+  border: 1px solid #eee;
+}
+
+/* Sentence and blank styles */
+.instruction {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sentence {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn {
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 10px;
+  background-color: rgb(59, 59, 141);
+  color: white;
+
+}
+
+.btn:hover {
+  background: #0033cc;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn.primary {
+  background: var(--correct-color);
+  /*border-color: var(--correct-color);*/
+}
+
+.btn.primary:hover {
+  background: var(--correct-hover);
+  border-color: var(--correct-hover);
+}
+
+.drop-zone {
+  display: inline-block;
+  width: 100px;
+  min-height: 1.5em;
+  border-bottom: 2px solid #555;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
+.blank {
+  min-width: 120px;
+  height: 28px;
+  background-color: var(--input-colour);
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+/* Translation */
+#english-translation {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Options */
+#options-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.option {
+  background: #3e4352;
+  color: var(--base-color);
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.option:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+
+
+#feedback {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}

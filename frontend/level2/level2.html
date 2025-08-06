@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Level 2</title>
+    <link rel="stylesheet" href="../level2/level2.css"/>
+</head>
+<body>
+    <nav>
+        <div class="logo">VivaLingo</div>
+        <ul class="nav-links">
+            <li><a href="../user_dashboard/user_dashboard.html">Dashboard</a></li>
+            <li><a href="../loginPage/login.html">Log Out</a></li>
+          </ul>
+    </nav>
+  <div class="container">
+    <div class="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <span class="progress-text" id="progress-text">0%</span>
+  </div>
+
+    <div class="header">
+      <h1>Level 2: Fill in Blanks</h1>
+    </div>
+    <p class="instruction">Drag in the correct missing word!</p>
+
+    <div class="game-container">
+        <div class="sentence" id="sentence-container"></div>
+        <div id="english-translation"></div>
+
+
+        <div id="options-container">
+            <button class="option"></button>
+            <button class="option"></button>
+            <button class="option"></button>
+            <button class="option"></button>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" id="Submit">Submit Answer</button>
+    </div>
+
+    <div id="feedback" style="margin-top: 20px; font-weight: bold;"></div>
+
+
+  <script src="./level2.js"></script>
+
+</body>
+</html>
