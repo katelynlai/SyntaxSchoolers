@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mermaid Example</title>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h1>Entity Relationship Diagram</h1>
+
+  <pre class="mermaid">
+erDiagram
+    users ||--o{ levelProgress: user_id
+    users ||--O{ overallProgress: user_id
+    category ||--o{ vocab: category_id
+    category ||--o{ sentence: category_id
+     
+
+    users {
+        user_id integer "PK"
+        first_name varchar(100) "not null"
+        last_name varchar(100) "not null"
+        username varchar(50) "unique, not null"
+        password varchar(255) "hashed, not null"
+        role varchar(20) "'student' or 'staff'"
+    }
+    vocab {
+        vocab_id integer "PK"
+        lang1_word varchar(255) "not null"
+        lang2_word varchar(255) "not null"
+        category_id varchar "FK"
+    }
+    category {
+        category_id integer "PK"
+        category_name varchar(100) "not null"
+    }
+    levelProgress {
+        level_progress_id integer "PK"
+        user_id integer "FK"
+        level_id integer "not null"
+        questions_answered integer "not null"
+        questions_correct integer "not null"
+        total_questions integer "not null"
+        level_status boolean "'pass' or 'fail'" 
+    }
+    overallProgress {
+        overall_progress_id integer "PK"
+        user_id integer "FK"
+        level_status boolean "'pass' or 'fail'"
+    }
+    sentence {
+      sentence_id integer "PK"
+      english varchar "not null"
+      french varchar "not null"
+      shuffled varchar "not null"
+      category_id integer "FK"
+    }
+    level {
+      level_id integer "PK"
+      level_name varchar "not null"
+    }
+
+  </pre>
+</body>
+</html>
