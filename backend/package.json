@@ -4,6 +4,7 @@
     "description": "Backend API for SyntaxSchoolers language learning platform",
     "main": "app.js",
     "scripts": {
+      "start": "node index.js",
       "dev": "npx nodemon -L index.js",
       "test": "jest",
       "setup-db": "node ./database/setup.js"
