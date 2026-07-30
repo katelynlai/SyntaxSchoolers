@@ -39,9 +39,7 @@ app.use('/api/progress', userDashRouter);
 app.use('/api/staff', staffRoutes);
 
 app.get('/', (req, res) => {
-  res.sendFile(
-    path.join(__dirname, '../frontend/homePage/homePage.html')
-    );
+  res.redirect('/homePage/homePage.html');
 });
 
 app.use(express.static(path.join(__dirname, '../frontend')));
