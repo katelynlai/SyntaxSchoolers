@@ -38,7 +38,11 @@ app.use('/api/progress', userDashRouter);
 // Staff Routes for teachers (CRUD operations)
 app.use('/api/staff', staffRoutes);
 
-
+app.get('/', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, '../frontend/homePage/homePage.html')
+    );
+});
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
