@@ -27,7 +27,7 @@ function dropHandler(ev) {
 
 async function loadSentence() {
     try {
-      const res = await fetch('http://localhost:3000/app/sentence');
+      const res = await fetch('/app/sentence');
       const data = await res.json();
       console.log('Data received from backend:', data);
       const { english, shuffled, sentence_id } = data;
@@ -85,7 +85,7 @@ document.getElementById('Submit').addEventListener('click', () => {
     console.log("sentenceId:", sentenceId);
     console.log("Submitted sentence:", selectedWords);
   
-    fetch('http://localhost:3000/app/sentence/submit-sentence', {
+    fetch('/app/sentence/submit-sentence', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -124,7 +124,7 @@ document.getElementById('Submit').addEventListener('click', () => {
           
               // ✅ Redirect to transition page after short delay
               setTimeout(() => {
-                window.location.href = 'http://127.0.0.1:5501/frontend/transitionPage/transition.html?from=level3';
+                window.location.href = '/transitionPage/transition.html?from=level3';
               }, 1500);
             }, 1500);
           }

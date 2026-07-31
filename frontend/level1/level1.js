@@ -9,7 +9,7 @@ async function startGame() {
     document.getElementById('startBtn').style.display = 'none';
     
     try {
-        const response = await fetch('http://localhost:3000/api/levels/1/start', {
+        const response = await fetch('/api/levels/1/start', {
             method: 'POST'
         });
             const data = await response.json();
@@ -140,7 +140,7 @@ async function startGame() {
         const userId = 1;
         console.log("userId:", userId);
         try {
-            const response = await fetch('http://localhost:3000/api/levels/1/submit', {
+            const response = await fetch('/api/levels/1/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -191,7 +191,7 @@ async function startGame() {
 
     async function nextLevel() {
         await submitLevel();
-        window.location.href = 'http://127.0.0.1:5501/frontend/transitionPage/transition.html?from=level1';
+        window.location.href = '/transitionPage/transition.html?from=level1';
     }
       
 

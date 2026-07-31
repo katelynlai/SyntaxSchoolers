@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Fetch progress from backend
     let progress;
     try {
-        const response = await fetch(`http://localhost:3000/api/progress/${userId}`);
+        const response = await fetch(`/api/progress/${userId}`);
         progress = await response.json();
     } catch (err) {
         console.error('Failed to load progress:', err);

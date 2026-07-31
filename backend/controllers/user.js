@@ -6,14 +6,12 @@ const User = require('../models/user');
 async function register(req, res) {
     try {
       const data = req.body;
-      console.log(data)
   
       // Generate a salt with a specific cost
       const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS));
   
       // Hash the password
       data["password"] = await bcrypt.hash(data.password, salt);
-      console.log(data)
       const result = await User.create(data);
   
       res.status(201).send(result);
