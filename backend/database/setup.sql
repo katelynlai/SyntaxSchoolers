@@ -206,3 +206,48 @@ INSERT INTO users (first_name, surname, username, password, role) VALUES
 -- Create a sample student user
 INSERT INTO users (first_name, surname, username, password, role) VALUES 
     ('John', 'Doe', 'student', 'studenttest', 'Student');
+
+-- =========================================================
+-- ROW LEVEL SECURITY
+-- =========================================================
+
+-- Public read-only tables
+ALTER TABLE public.vocab ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.level2_sentences ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.level ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.sentences ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "vocab_read_public"
+ON public.vocab
+FOR SELECT TO anon, authenticated
+USING (true);
+
+CREATE POLICY "level2_sentences_read_public"
+ON public.level2_sentences
+FOR SELECT TO anon, authenticated
+USING (true);
+
+CREATE POLICY "level_read_public"
+ON public.level
+FOR SELECT TO anon, authenticated
+USING (true);
+
+CREATE POLICY "sentences_read_public"
+ON public.sentences
+FOR SELECT TO anon, authenticated
+USING (true);
+
+
+-- Private tables
+ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.levelprogress ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.overallprogress ENABLE ROW LEVEL SECURITY;
+
+REVOKE ALL ON TABLE public.users
+FROM anon, authenticated;
+
+REVOKE ALL ON TABLE public.levelprogress
+FROM anon, authenticated;
+
+REVOKE ALL ON TABLE public.overallprogress
+FROM anon, authenticated;
