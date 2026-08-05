@@ -28,6 +28,14 @@ CREATE TABLE category (
     PRIMARY KEY (category_id)
 );
 
+ALTER TABLE public.category ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "category_read_public"
+ON public.category
+FOR SELECT
+TO anon, authenticated
+USING (true);
+
 CREATE TABLE level (
     level_id INT GENERATED ALWAYS AS IDENTITY,
     level_name VARCHAR(50) NOT NULL,
